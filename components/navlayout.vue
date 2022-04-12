@@ -45,9 +45,11 @@
           </nav>
       </header>
       <div class="hero">
-          <!-- <div class="t1"></div>
-          <div class="t2"></div> -->
+          <div class="t1 drop-anim"></div>
+          <div class="t2 drop-anim"></div>
           <h2 class="main-heading py-5">Hafi Yawe</h2>
+          <div class="t3 drop-anim"></div>
+          <div class="t4 drop-anim"></div>
           <div class="search py-5">
               <v-col
           cols="12"
@@ -231,8 +233,35 @@ header ul li:hover .square {
     height: 30px;
     left: 40%;
     top: 5%;
-    background: #011936;
+    background: rgba(0, 0, 0, 0.1);
     clip-path: polygon(100% 45%, 0 0, 0 100%);
+}
+.t2 {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    left: 42%;
+    top: 5%;
+    background: rgba(0, 0, 0, 0.1);
+    clip-path: polygon(100% 45%, 0 0, 0 100%);
+}
+.t3 {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    left: 59%;
+    top: 5%;
+    background: rgba(0, 0, 0, 0.1);
+    clip-path: polygon(0 45%, 100% 100%, 100% 0);
+}
+.t4 {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    left: 57%;
+    top: 5%;
+    background: rgba(0, 0, 0, 0.1);
+    clip-path: polygon(0 45%, 100% 100%, 100% 0);
 }
 .main-heading {
     display: flex;
@@ -328,5 +357,20 @@ header ul li:hover .square {
         overflow: hidden;
 
     }
+}
+
+/* animation */
+.drop-anim {
+    padding-top: 60px;
+    animation: drop 2.5s infinite;
+}
+@keyframes drop {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {transform: translateX(0);}
+    40% {transform: translateX(-30px);}
+    60% {transform: translateX(-15px);}
 }
 </style>
