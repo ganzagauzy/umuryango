@@ -223,7 +223,7 @@ header ul li:hover .square {
     }
 }
 .hero {
-    padding: 10px 0;
+    padding: 5px 0;
     position: relative;
     background: #065A82;
 }
