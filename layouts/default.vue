@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="bg">
       
       <v-main>
           <navlayout />
@@ -18,5 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.bg {
+  background: #E3F2FD;
+}
 </style>

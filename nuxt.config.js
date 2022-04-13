@@ -50,6 +50,10 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
   ],
+  axios: {
+    baseURL: "https://hafi-yawe.fly.dev/api"
+    // baseURL: "http://127.0.0.1:8000/api/v1"
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [

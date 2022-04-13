@@ -14,51 +14,51 @@
               </div>
               </div>
               <div class="sidebar">
-                  <a href="">
+                  <Nuxt-Link to="/admin1/irembo">
+                      <span class="icon-sharp">
+                          <v-icon>mdi-grid</v-icon>
+                      </span>
+                      <h3 class="text-muted">irembo</h3>
+                  </Nuxt-Link>
+                  <Nuxt-Link to="/admin1/imisoro" class="">
+                      <span class="icon-sharp">
+                          <v-icon>mdi-grid</v-icon>
+                      </span>
+                      <h3 class="text-muted">Imisoro</h3>
+                  </Nuxt-Link>
+                  <!-- <Nuxt-Link to="">
                       <span class="icon-sharp">
                           <v-icon>mdi-grid</v-icon>
                       </span>
                       <h3 class="text-muted">Dasboard</h3>
-                  </a>
-                  <a href="" class="active">
+                  </Nuxt-Link>
+                  <Nuxt-Link to="">
                       <span class="icon-sharp">
                           <v-icon>mdi-grid</v-icon>
                       </span>
                       <h3 class="text-muted">Dasboard</h3>
-                  </a>
-                  <a href="">
+                  </Nuxt-Link>
+                  <Nuxt-Link to="">
                       <span class="icon-sharp">
                           <v-icon>mdi-grid</v-icon>
                       </span>
                       <h3 class="text-muted">Dasboard</h3>
-                  </a>
-                  <a href="">
+                  </Nuxt-Link>
+                  <Nuxt-Link to="">
                       <span class="icon-sharp">
                           <v-icon>mdi-grid</v-icon>
                       </span>
                       <h3 class="text-muted">Dasboard</h3>
-                  </a>
-                  <a href="">
+                  </Nuxt-Link>
+                  <Nuxt-Link to="">
                       <span class="icon-sharp">
                           <v-icon>mdi-grid</v-icon>
                       </span>
                       <h3 class="text-muted">Dasboard</h3>
-                  </a>
-                  <a href="">
+                  </Nuxt-Link> -->
+                  <a >
                       <span class="icon-sharp">
-                          <v-icon>mdi-grid</v-icon>
-                      </span>
-                      <h3 class="text-muted">Dasboard</h3>
-                  </a>
-                  <a href="">
-                      <span class="icon-sharp">
-                          <v-icon>mdi-grid</v-icon>
-                      </span>
-                      <h3 class="text-muted">Dasboard</h3>
-                  </a>
-                  <a href="">
-                      <span class="icon-sharp">
-                          <v-icon>mdi-grid</v-icon>
+                          <v-icon dark>mdi-grid</v-icon>
                       </span>
                       <h3 class="text-muted">Logout</h3>
                   </a>
@@ -93,7 +93,7 @@
                   </div> -->
                   <div class="profile">
                       <div class="info">
-                          <p>Hey <b>k</b></p>
+                          <p>Hey <b>Admin Admin</b></p>
                           <small class="text-muted">Admin</small>
                       </div>
                       <div class="profile-photo">
@@ -229,7 +229,7 @@ small {
     overflow: hidden;
 }
 .text-muted {
-    color: #7d8da1;
+    color: #111;
 }
 p {
     color: #677483;
@@ -286,7 +286,7 @@ aside .sidebar a {
     gap: 1rem;
     align-items: center;
     position: relative;
-    height: 1rem;
+    height: 0.5rem;
     transition: all 300ms ease;
 }
 aside .sidebar a span {
@@ -294,14 +294,30 @@ aside .sidebar a span {
     transition: all 300ms ease;
 }
 aside .sidebar a:last-child {
-    position: absolute;
-    bottom: 0rem;
-    width: 100%;
+    background: #1D4E89;
+    border-radius: 15px;
+    padding: 20px 10px;
+    bottom: 10px;
+    color: #fff;
 }
-aside .sidebar a.active {
-    
-    color: #011936;
+aside .sidebar a:last-child .text-muted {
+    color: #fff;
+}
+
+// aside .sidebar a.active {
+//     border-radius: 10px;
+//     background: #011936;
+//     padding: 20px 0px;
+//     margin-left: 0;
+// }
+aside .sidebar a.nuxt-link-exact-active {
+    border-radius: 10px;
+    background: #011936;
+    padding: 20px 10px;
     margin-left: 0;
+}
+aside .sidebar a.nuxt-link-exact-active .text-muted {
+    color: #fff;
 }
 aside .sidebar a.active::before {
     content: '';
@@ -472,7 +488,7 @@ main .recent-category a {
     border-radius: 8px;
 
 }
-.right .top ,profile {
+.right .top .profile {
     display: flex;
     gap: 2rem;
     text-align: right;
@@ -550,10 +566,10 @@ main .recent-category a {
     aside .sidebar a {
         width: 5.6rem;
     }
-    aside .sidebar a:last-child {
-        position: relative;
-        margin-top: 1.8rem;
-    }
+    // aside .sidebar a:last-child {
+    //     position: relative;
+    //     margin-top: 1.8rem;
+    // }
     /** main */
     main .insight {
         grid-template-columns: 1fr;
@@ -608,8 +624,14 @@ main .recent-category a {
     }
     aside .sidebar a {
         width: 100%;
-        height: 3.4rem;
+        height: 0.2rem;
+
     }
+    aside .sidebar a:last-child {
+        padding: 20px 10px;
+        right: 10%;
+    }
+    
    aside .close {
        display: inline-block;
        cursor: pointer;
@@ -650,9 +672,9 @@ main .recent-category a {
        position: absolute;
        left: 76%;
    }
-   .right .profile  .info {
-       display: none;
-   }
+//    .right .profile  .info {
+//        margin-top: 40px;
+//    }
    .right .top button {
        display: inline-block;
        background: transparent;
