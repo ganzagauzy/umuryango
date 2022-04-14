@@ -4,8 +4,25 @@
       <div class="top2">
         <div class="category">
           <v-container>
-          <h4>Umuryango</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam labore doloremque, placeat ipsa temporibus repudiandae sit odit. Repellendus, porro dolore nihil minima et ab delectus nesciunt! Ducimus, autem. Ratione, omnis?</p>
+          <!-- <h4>Categories</h4> -->
+            <ul v-for="category in categories.categories"
+                    :key="category.id" class="cat-serv">
+                     <li>
+                          
+                    <b>{{category.name}}</b>
+                    <b>{{category.id}}</b>
+                    <br>
+                    <!-- {{category.services}} -->
+                    <div v-for="service in category.services"
+                    :key="service.id">
+                    <br>
+                    Service
+                    {{service.id}}
+                    {{service.name}}
+                    </div>
+                     </li>
+                     <br>
+                    </ul>
         </v-container>
         </div>
       </div>
@@ -14,11 +31,37 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-
+  
+  data() {
+        return {
+            categories: [],
+        }
+    },
   mounted() {
     this.header()
   },
+  async created () {
+        const config = {
+            headers: {
+                'Accept': 'application/json'
+
+            }
+        }
+        try {
+        const res = await axios.get('https://hafi-yawe.fly.dev/api/categories', config);
+        
+        this.categories = res.data
+        console.log(this.categories);
+
+        }
+        catch(error) {
+            console.log(error);
+        }
+
+
+    },
   methods: {
       header() {
         if(window.scrollY > 0) {
@@ -36,8 +79,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+ul {
+  list-style: none;
+}
+li {
+  list-style: none;
+}
 .main {
+  background: #E3F2FD;
   position: relative;
 }
 .absolute { 

@@ -1,7 +1,7 @@
 <template>
   <div @click.stop="drawer = false">
       <header>
-          <div class="nav-toggle-btn " @click.stop="drawer = !drawer">
+          <div class="nav-toggle-btn " id="menu-btn" >
                       <span class="one"></span>
                       <span class="two"></span>
                       <span class="three"></span>
@@ -10,10 +10,19 @@
           <nav>
               <ul>
                   <li>
-                      <v-btn class="btn" text dark><p class="btn-text">Register</p><span class="square"></span></v-btn>
+                      <v-btn class="btn" text
+                        dark
+                        nuxt
+                        to="/auth/register"
+                      ><p class="btn-text">Register</p><span class="square"></span>
+                      </v-btn>
                   </li>
                   <li>
-                      <v-btn class="btn" text dark><p class="btn-text">Sing in</p><span class="square"></span></v-btn>
+                      <v-btn class="btn" 
+                        text dark
+                        nuxt
+                        to="/auth/login"
+                        ><p class="btn-text">Log in</p><span class="square"></span></v-btn>
                   </li>
                   
                   <div class="nav-toggle-account-btn px-5">
@@ -33,6 +42,9 @@
                                     <v-list-item
                                     v-for="(item, index) in items"
                                     :key="index"
+                                    :to="item.to"
+                                    router
+                                    exact
                                     >
                                     <v-list-item-title class="px-3">{{ item.title }}</v-list-item-title>
                                     </v-list-item>
@@ -68,32 +80,85 @@
           </div>
 
       </div>
-      <div class="drawer">
-          <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      class="d-md-none drawer2"
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(link, i) in links"
-          :key="i"
-          :to="link.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ link.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="link.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+      
+      <div class="aside">
+          <aside>
+              <div class="top">
+              <div class="logo">
+                  <img src="" alt="">
+                  <h2>Hafi yawe</h2>
+              </div>
+              <div class="close" id="close-btn">
+                  <span class="icon-sharp">
+                      <v-icon>mdi-close</v-icon>
+                  </span>
+              </div>
+              </div>
+              <div class="sidebar">
+                  <Nuxt-Link to="">
+                      <span class="icon-sharp">
+                          <v-icon>mdi-grid</v-icon>
+                      </span>
+                      <h3 class="text-muted">Home</h3>
+                  </Nuxt-Link>
+                  <Nuxt-Link to="" class="">
+                      <span class="icon-sharp">
+                          <v-icon>mdi-grid</v-icon>
+                      </span>
+                      <h3 class="text-muted">Home</h3>
+                  </Nuxt-Link>
+                  <Nuxt-Link to="" class="">
+                      <span class="icon-sharp">
+                          <v-icon>mdi-grid</v-icon>
+                      </span>
+                      <h3 class="text-muted">Home</h3>
+                  </Nuxt-Link>
+                  <Nuxt-Link to="/auth/register" class="">
+                      <span class="icon-sharp">
+                          <v-icon>mdi-grid</v-icon>
+                      </span>
+                      <h3 class="text-muted">Register</h3>
+                  </Nuxt-Link>
+                  <Nuxt-Link to="/auth/login" class="">
+                      <span class="icon-sharp">
+                          <v-icon>mdi-grid</v-icon>
+                      </span>
+                      <h3 class="text-muted">Login</h3>
+                  </Nuxt-Link>
+                  <!-- <Nuxt-Link to="">
+                      <span class="icon-sharp">
+                          <v-icon>mdi-grid</v-icon>
+                      </span>
+                      <h3 class="text-muted">Dasboard</h3>
+                  </Nuxt-Link>
+                  <Nuxt-Link to="">
+                      <span class="icon-sharp">
+                          <v-icon>mdi-grid</v-icon>
+                      </span>
+                      <h3 class="text-muted">Dasboard</h3>
+                  </Nuxt-Link>
+                  <Nuxt-Link to="">
+                      <span class="icon-sharp">
+                          <v-icon>mdi-grid</v-icon>
+                      </span>
+                      <h3 class="text-muted">Dasboard</h3>
+                  </Nuxt-Link>
+                  <Nuxt-Link to="">
+                      <span class="icon-sharp">
+                          <v-icon>mdi-grid</v-icon>
+                      </span>
+                      <h3 class="text-muted">Dasboard</h3>
+                  </Nuxt-Link>
+                  <Nuxt-Link to="">
+                      <span class="icon-sharp">
+                          <v-icon>mdi-grid</v-icon>
+                      </span>
+                      <h3 class="text-muted">Dasboard</h3>
+                  </Nuxt-Link> -->
+                  
+              </div>
+
+          </aside>
       </div>
   </div>
 </template>
@@ -102,8 +167,10 @@
 export default {
     data: () => ({
       items: [
-        { title: 'Register' },
-        { title: 'Sign in' },
+        { title: 'Register',
+        to: '/auth/register' },
+        { title: 'Log in',
+        to: '/auth/login' },
       ],
       clipped: false,
       drawer: false,
@@ -126,12 +193,24 @@ export default {
     }),
     mounted() {
         this.mobal();
+        this.responsive();
     },
     methods: {
         mobal() {
             if(window.innerWidth > 767) {
                 this.drawer = false
             }
+        },
+        responsive() {
+            const sideMenu = document.querySelector("aside")
+            const menuBtn = document.querySelector("#menu-btn")
+            const closeBtn = document.querySelector("#close-btn")
+            menuBtn.addEventListener("click", () => {
+                sideMenu.style.display= "block"
+            })
+            closeBtn.addEventListener("click", () => {
+                sideMenu.style.display= "none"
+            })
         }
     }
 }
@@ -372,5 +451,132 @@ header ul li:hover .square {
     100% {transform: translateX(0);}
     40% {transform: translateX(-30px);}
     60% {transform: translateX(-15px);}
+}
+
+
+/**Mobal aside */
+
+aside {
+    display: none;
+    @media screen and (max-width:768) {
+        display: block;
+    }
+}
+aside .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+}
+aside .logo {
+    display: flex;
+    gap: 1rem;
+}
+aside .logo img {
+    width: 2rem;
+    height: 2rem;
+}
+aside .close {
+    display: none;
+}
+aside  .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    position: relative;
+    top: 2rem;
+}
+aside h3 {
+    font-weight: 500;
+}
+aside .sidebar a {
+    display: flex;
+    color: #011936;
+    margin: 2rem;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    height: 0.5rem;
+    transition: all 300ms ease;
+}
+aside .sidebar a span {
+    font-size: 1.6rem;
+    transition: all 300ms ease;
+}
+
+// aside .sidebar a.active {
+//     border-radius: 10px;
+//     background: #011936;
+//     padding: 20px 0px;
+//     margin-left: 0;
+// }
+
+aside .sidebar a:hover span {
+    margin-left: 1rem;
+
+}
+
+
+
+
+
+/**media queries */
+@media screen and (max-width:1200px) {
+    
+    
+    aside .logo h2 {
+        display: none;
+    }
+    aside .sidebar h3 {
+        display: none;
+    }
+    aside .sidebar a {
+        width: 5.6rem;
+    }
+
+    
+    
+}
+/**mobal queries */
+@media screen and (max-width:768px) {
+   
+    aside {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        background: #fff;
+        width: 18rem;
+        z-index: 3;
+        height: 100vh;
+        padding-right: 1.4rem;
+        display: none;
+        animation: showMenu 400ms ease forwards;
+    }
+    @keyframes showMenu {
+        to {
+            left: 0;
+        }
+        
+    }
+    aside .logo {
+        margin-left: 1rem;
+    }
+    aside .logo h2 {
+        display: inline;
+    }
+    aside .sidebar h3 {
+        display: inline;
+    }
+    aside .sidebar a {
+        width: 100%;
+        height: 0.2rem;
+
+    }
+   
+    
+   aside .close {
+       display: inline-block;
+       cursor: pointer;
+   }
 }
 </style>

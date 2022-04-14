@@ -18,18 +18,10 @@
                         font-primary
                       "
                     >
-                      Register
+                      Login
                     </h5>
                     <h4></h4>
                     <v-form @submit.prevent="submit" class="px-4">
-                      <label>Name</label>
-                      <v-text-field
-                        cols="12"
-                        v-model="name"
-                        type="text"
-                        outlined
-                        dense
-                      ></v-text-field>
                       <label>Email</label>
                       <v-text-field
                         cols="12"
@@ -54,14 +46,14 @@
                           elevation="0"
                           color="primary"
                         >
-                          Register
+                          Login
                         </v-btn> -->
                         <v-btn 
                           class="btn"
                           text dark
                           type="submit"
                           elevation="0"
-                          ><p class="btn-text">Register</p><span class="square"></span></v-btn>
+                          ><p class="btn-text">Login</p><span class="square"></span></v-btn>
                       </div>
                     </v-form>
                   </v-card-text>
@@ -71,9 +63,10 @@
                       class="text-center"
                       style="font-size: 15px; font-weight: 600"
                     >
-                     Have an account?
-                      <span class="text-link" @click="login"
-                        >Login Here</span
+                     Don't have an account?
+                     
+                      <span class="text-link" @click="register"
+                        >Register Here</span
                       >
                     </p>
                   </v-card-text>
@@ -81,7 +74,7 @@
               </v-row>
             </v-window-item>
 
-           
+            
             
           </v-window>
         </v-card>
@@ -105,6 +98,7 @@ export default {
           content: "home page for PayPack Market Place",
         },
       ],
+      
     };
   },
   data() {
@@ -112,17 +106,16 @@ export default {
         password: '',
         email: '',
         step: '',
-        name: '',
         errors: '',
       }
   },
   methods: {
-    login() {
-      this.$router.push("/auth/login");
-    },
-    submit() {
-      console.log("sign up");
-    },
+      register () {
+        this.$router.push("/auth/register");
+      },
+      submit () {
+        console.log("log in");
+      },
   },
   layout: "empty",
 };
@@ -162,7 +155,6 @@ export default {
   cursor: pointer;
   text-decoration: underline;
 }
-
 
 .btn {
     z-index: 5;

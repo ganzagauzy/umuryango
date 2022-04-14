@@ -1,5 +1,5 @@
 <template>
-  <v-app class="bg">
+  <v-app class="">
       
       <v-main>
           <navlayout />
