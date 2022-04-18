@@ -57,7 +57,22 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
+  auth: {
+    strategies: {
+      'laravelPassport': {
+        provider: 'laravel/passport',
+        endpoints: {
+          userInfo: '...'
+        },
+        url: '...',
+        clientId: '...',
+        clientSecret: '...'
+      },
+    }
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

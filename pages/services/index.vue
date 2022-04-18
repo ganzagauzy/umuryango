@@ -4,14 +4,33 @@
       <div class="top2">
         <div class="category">
           <v-container class="d-flex flex-wrap justify-content-space-between container">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga rem dolores veritatis eaque inventore, repellat temporibus cum nisi, nihil rerum, esse hic in ratione dolorem unde harum libero reprehenderit odio?</p>
-          <v-btn class="btn" text dark
-                        
-                        nuxt
-                        to="/services"
-                      ><p class="btn-text">Get Started</p><span class="square"></span>
-                      </v-btn>
-            
+          <!-- <h4>Categories</h4> -->
+            <div v-for="category in categories.categories"
+                    :key="category.id" class="cat-serv">
+                     <div>
+                          
+                    <b>{{category.name}}</b>
+                    <b>{{category.id}}</b>
+                    <br>
+                    <!-- {{category.services}} -->
+                    <div v-for="service in category.services"
+                    :key="service.id" class="services">
+                    <br>
+                    <NuxtLink
+                    :to="{
+                      name: 'services-id',
+                      params: { id: service.id },
+                    }"
+                    class="nuxt-link"
+                  >
+                    Service
+                    {{service.id}}
+                    {{service.name}}
+                    </NuxtLink>
+                    </div>
+                     </div>
+                     <br>
+                    </div>
         </v-container>
         </div>
       </div>
@@ -96,35 +115,8 @@ li {
 .services:hover {
   cursor: pointer;
 }
-.btn {
-    z-index: 5;
-    position: relative;
-    overflow: hidden;
-    background: #065A82;
+.nuxt-link {
+    text-decoration: none;
 }
-.btn-text {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 5;
-}
-.btn:hover .square {
-    right: -25px;
-    width: 1000%;
-    height: 1000%;
-    transition: 0.25s;
-}
-.square {
-    position: absolute;
-    top: 50%;
-    right: -20px;
-    transform: translateY(-50%);
-    border-radius: 8px;
-    transition: 0.25s;
-    height: 40px;
-    width: 40px;
-    background: #011936;
-    
-}
+
 </style>

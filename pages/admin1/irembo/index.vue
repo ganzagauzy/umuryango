@@ -366,9 +366,9 @@ export default {
         })
         console.log("edit", category.name);
     },
-    remove(category) {
-        
-    },
+    // remove(category) {
+    //     console.log(category);
+    // },
     edit(service) {
         console.log("edit", service.name);
     },
@@ -412,7 +412,6 @@ export default {
   padding: 3rem;
   border-radius: 0.4rem;
   margin-top: 1rem;
-  box-shadow: 0 2rem 3rem #fafafa;
   transition: all 300ms ease;
 }
 .insight > div:hover {

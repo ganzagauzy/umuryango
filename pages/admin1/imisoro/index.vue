@@ -366,9 +366,9 @@ export default {
         })
         console.log("edit", category.name);
     },
-    remove(category) {
+    // remove(category) {
         
-    },
+    // },
     edit(service) {
         console.log("edit", service.name);
     },

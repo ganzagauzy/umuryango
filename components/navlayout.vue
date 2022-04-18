@@ -9,6 +9,15 @@
           <a href="" class="logo text--white">Hafi Yawe</a>
           <nav>
               <ul>
+                  
+                  <li>
+                      <v-btn class="btn" text
+                        dark
+                        nuxt
+                        to="/"
+                      ><p class="btn-text">Home</p><span class="square"></span>
+                      </v-btn>
+                  </li>
                   <li>
                       <v-btn class="btn" text
                         dark
@@ -95,31 +104,20 @@
               </div>
               </div>
               <div class="sidebar">
-                  <Nuxt-Link to="">
+                  <Nuxt-Link to="/" id="link">
                       <span class="icon-sharp">
                           <v-icon>mdi-grid</v-icon>
                       </span>
                       <h3 class="text-muted">Home</h3>
                   </Nuxt-Link>
-                  <Nuxt-Link to="" class="">
+                  
+                  <Nuxt-Link to="/auth/register" id="link" class="">
                       <span class="icon-sharp">
                           <v-icon>mdi-grid</v-icon>
                       </span>
-                      <h3 class="text-muted">Home</h3>
+                      <h3 class="text-muted" >Register</h3>
                   </Nuxt-Link>
-                  <Nuxt-Link to="" class="">
-                      <span class="icon-sharp">
-                          <v-icon>mdi-grid</v-icon>
-                      </span>
-                      <h3 class="text-muted">Home</h3>
-                  </Nuxt-Link>
-                  <Nuxt-Link to="/auth/register" class="">
-                      <span class="icon-sharp">
-                          <v-icon>mdi-grid</v-icon>
-                      </span>
-                      <h3 class="text-muted">Register</h3>
-                  </Nuxt-Link>
-                  <Nuxt-Link to="/auth/login" class="">
+                  <Nuxt-Link to="/auth/login" id="link" class="">
                       <span class="icon-sharp">
                           <v-icon>mdi-grid</v-icon>
                       </span>
@@ -205,10 +203,14 @@ export default {
             const sideMenu = document.querySelector("aside")
             const menuBtn = document.querySelector("#menu-btn")
             const closeBtn = document.querySelector("#close-btn")
+            const link = document.querySelector("#link")
             menuBtn.addEventListener("click", () => {
                 sideMenu.style.display= "block"
             })
             closeBtn.addEventListener("click", () => {
+                sideMenu.style.display= "none"
+            })
+            link.addEventListener("click", () => {
                 sideMenu.style.display= "none"
             })
         }
@@ -376,9 +378,11 @@ header ul li:hover .square {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     @media screen and (min-width: 767px){
         display: none;
     }
+    
     
 }
 .nav-toggle-account-btn.active {
@@ -394,6 +398,7 @@ header ul li:hover .square {
     flex-direction: column;
     align-items: center;
     gap: 6px;
+    cursor: pointer;
      @media screen and (min-width: 767px){
         display: none;
     }

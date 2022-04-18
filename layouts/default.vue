@@ -3,7 +3,9 @@
       
       <v-main>
           <navlayout />
+          <v-container>
             <Nuxt />
+            </v-container>
 
         </v-main>
   </v-app>
