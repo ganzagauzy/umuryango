@@ -58,7 +58,7 @@
                   </Nuxt-Link> -->
                   <a >
                       <span class="icon-sharp">
-                          <v-icon dark>mdi-grid</v-icon>
+                          <v-icon >mdi-grid</v-icon>
                       </span>
                       <h3 class="text-muted">Logout</h3>
                   </a>
@@ -294,15 +294,13 @@ aside .sidebar a span {
     transition: all 300ms ease;
 }
 aside .sidebar a:last-child {
-    background: #1D4E89;
+    position: absolute;
+    border: 1px solid #111;
     border-radius: 15px;
     padding: 20px 10px;
     bottom: 10px;
-    color: #fff;
 }
-aside .sidebar a:last-child .text-muted {
-    color: #fff;
-}
+
 
 // aside .sidebar a.active {
 //     border-radius: 10px;
@@ -312,13 +310,13 @@ aside .sidebar a:last-child .text-muted {
 // }
 aside .sidebar a.nuxt-link-exact-active {
     border-radius: 10px;
-    background: #011936;
-    padding: 20px 10px;
-    margin-left: 0;
+    margin-right: 0;
+ 
 }
 aside .sidebar a.nuxt-link-exact-active .text-muted {
-    color: #fff;
+    color: #1D4E89;
 }
+
 aside .sidebar a.active::before {
     content: '';
     width: 6px;
@@ -327,10 +325,10 @@ aside .sidebar a.active::before {
 }
 aside .sidebar a.active span {
     color: #1D4E89;
-    margin-left: calc(1rem -3px);
+    margin-right: calc(1rem -3px);
 }
 aside .sidebar a:hover span {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
 
 }
 

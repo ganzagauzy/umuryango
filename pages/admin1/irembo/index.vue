@@ -1,5 +1,5 @@
-<template>
-  <div>
+<template class="border">
+  <div >
     <div>
       <h2>Irembo</h2>
       <div class="insight">
@@ -7,7 +7,7 @@
           <span class="icon-sharp"><v-icon dark>mdi-grid</v-icon></span>
           <div class="middle">
             <div class="left">
-              <!-- <h3>Tot1</h3> -->
+              <h3>Tot1</h3>
               <h1>50</h1>
             </div>
             <div class="progress">
@@ -26,7 +26,7 @@
           <span class="icon-sharp"><v-icon dark>mdi-grid</v-icon></span>
           <div class="middle">
             <div class="left">
-              <!-- <h3>Tot1</h3> -->
+              <h3>Tot1</h3>
               <h1>50</h1>
             </div>
             <div class="progress">
@@ -45,7 +45,7 @@
           <span class="icon-sharp"><v-icon dark>mdi-grid</v-icon></span>
           <div class="middle">
             <div class="left">
-              <!-- <h3>Tot1</h3> -->
+              <h3>Tot1</h3>
               <h1>50</h1>
             </div>
             <div class="progress">
@@ -61,7 +61,7 @@
         </div>
         <!-- end-->
       </div>
-      <div class="categories py-5">
+      <div class="categories ">
         <h2>Categories and Services</h2>
         <div
           v-for="category in categories.categories"
@@ -72,12 +72,12 @@
             Category
             <b>{{ category.name }}</b>
             <b>{{ category.id }}</b>
-            <br />
-            {{ category }}
+            <!-- <br /> -->
+            <!-- {{ category }} -->
             <v-btn @click="edit(category)" icon><v-icon>mdi-pencil</v-icon> </v-btn>
             <v-btn @click="remove(category)" icon><v-icon>mdi-delete</v-icon> </v-btn>
             <br /><br />
-            {{ category.services }}
+            <!-- {{ category.services }} -->
             <div v-for="service in category.services" :key="service.id">
               <br />
               Service
@@ -92,11 +92,11 @@
     </div>
     <div class="right-side">
       <div class="margin-right">
-        <v-btn class="btn show-btn" text dark elevation="0" @click="showformcat"
+        <!-- <v-btn class="btn show-btn" text dark elevation="0" @click="showformcat"
           ><p class="btn-text">+ New Category</p>
           <span class="square"></span>
-        </v-btn>
-        <v-btn
+        </v-btn> -->
+        <!-- <v-btn
           class="btn show-btn service-btn"
           text
           dark
@@ -104,9 +104,9 @@
           @click="showformserv"
           ><p class="btn-text">+ New Service</p>
           <span class="square"></span>
-        </v-btn>
+        </v-btn> -->
         <v-card
-          class="shadow mx-auto"
+          class="shadow mx-auto rounded"
           max-width="400"
           v-if="showformcategory == true"
         >
@@ -178,7 +178,7 @@
           </v-window>
         </v-card>
         <v-card
-          class="shadow mx-auto"
+          class="shadow mx-auto service-form rounded" 
           max-width="400"
           v-if="showformservice == true"
         >
@@ -199,7 +199,7 @@
                       Create new Service
                     </h3>
                     <h4></h4>
-                    <v-form @submit.prevent="createservice" class="px-4">
+                    <v-form @submit.prevent="createservice" class="px-4 ">
                       <label>Service Name</label>
                       <v-text-field
                         cols="12"
@@ -290,8 +290,8 @@ export default {
       servicecategory: "",
       serviceprice: "",
       servicefield: "",
-      showformcategory: false,
-      showformservice: false,
+      showformcategory: true,
+      showformservice: true,
     };
   },
   async created() {
@@ -367,7 +367,7 @@ export default {
         console.log("edit", category.name);
     },
     // remove(category) {
-    //     console.log(category);
+        
     // },
     edit(service) {
         console.log("edit", service.name);
@@ -402,6 +402,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .insight {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -409,7 +410,7 @@ export default {
 }
 .insight > div {
   background: #fdfeff;
-  padding: 3rem;
+  padding: 2.5rem;
   border-radius: 0.4rem;
   margin-top: 1rem;
   transition: all 300ms ease;
@@ -445,7 +446,7 @@ export default {
 .insight svg circle {
   fill: none;
   stroke: #011936;
-  stroke-width: 14;
+  stroke-width: 5;
   stroke-linecap: round;
   transform: translate(5px, 5px);
   stroke-dasharray: 110;
@@ -456,7 +457,7 @@ export default {
   stroke-dasharray: 200;
 }
 .insight .box2 svg circle {
-  stroke-dashoffset: 20;
+  stroke-dashoffset: 15;
   stroke-dasharray: 80;
 }
 .insight .box3 svg circle {
@@ -483,7 +484,7 @@ export default {
   /** main */
   .insight {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 0.5rem;
   }
   // main .recent-category {
   //     width: 94%;
@@ -510,7 +511,7 @@ export default {
   }
 }
 .categories {
-  padding: 100px 0;
+  padding: 30px 0;
   @media screen and (max-width: 768px) {
     padding: 50px 0;
   }
@@ -535,7 +536,7 @@ export default {
   top: 0;
   width: 100%;
   left: 100%;
-  padding: 15px 30px;
+  padding: 40px 30px;
 }
 .right-side .margin-right {
   margin-right: 280px;
@@ -603,5 +604,11 @@ export default {
 .show-btn {
   margin-top: 20px;
   margin-bottom: 10px;
+}
+.service-form {
+  margin-top: 20px;
+}
+.rounded {
+  border-radius: 0.4rem;
 }
 </style>
