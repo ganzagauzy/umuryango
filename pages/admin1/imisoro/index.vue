@@ -329,6 +329,7 @@ export default {
         .then(() => {
             this.showformcat = false
           console.log("success");
+          this.name =  ''
         })
         .catch((error) => {
           console.log(error);
@@ -347,10 +348,14 @@ export default {
         })
         .then(() => {
             this.showformserv = false
-            this.errors = error
-          console.log("successfully created service");
+            console.log("successfully created service")
+          this.servicename = "",
+          this.serviceprice = "",
+          this.servicefield = "",
+          this.servicecategory = ""
         })
-        .catch((error) => {
+        .catch( error => {
+          this.errors = error
           console.log(error);
         });
 
@@ -409,13 +414,13 @@ export default {
   gap: 1rem;
 }
 .insight > div {
-  background: #fdfeff;
+  background: #fff;
   padding: 2.5rem;
   border-radius: 0.4rem;
   margin-top: 1rem;
   transition: all 300ms ease;
 }
-.insight > div:hover {
+.insight .box2 {
   box-shadow: none;
 }
 .insight > div span {
