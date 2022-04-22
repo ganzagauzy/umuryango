@@ -94,6 +94,7 @@
 
 
 <script>
+import axios from 'axios'
 export default {
   head() {
     return {
@@ -120,7 +121,24 @@ export default {
     login() {
       this.$router.push("/auth/login");
     },
-    submit() {
+    async submit() {
+       await axios
+        .post("https://hafi-yawe.fly.dev/api/register", {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        })
+        .then(() => {
+            
+            console.log("successfully created a user")
+          this.name = "",
+          this.email = "",
+          this.password = ""
+        })
+        .catch( error => {
+          this.errors = error
+          console.log(error);
+        });
       console.log("sign up");
     },
   },

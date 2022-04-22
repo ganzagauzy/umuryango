@@ -21,6 +21,8 @@
                     <!-- {{category.services}} -->
                     <div v-for="service in category.services"
                     :key="service.id" class="services">
+
+                    
                     <br>
                     <NuxtLink
                     :to="{
@@ -54,6 +56,7 @@
                     <!-- {{category.services}} -->
                     <div v-for="service in category.services"
                     :key="service.id" class="services">
+                    
                     <br>
                     <NuxtLink
                     :to="{
@@ -72,6 +75,9 @@
                     </div>
         </v-container>
         </div>
+
+
+
       </div>
     </div>
   </div>
@@ -79,14 +85,18 @@
 
 <script>
 import axios from 'axios'
+import Dialog from '../../components/dialog.vue'
 export default {
   
   data() {
-        return {
+      
+    
+     return {
             categories: [],
             taxes: [],
             showirembo: true,
-            showimisoro: false
+            showimisoro: false,
+            dialog: false,
         }
     },
   mounted() {

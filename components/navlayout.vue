@@ -6,7 +6,7 @@
                       <span class="two"></span>
                       <span class="three"></span>
                   </div>
-          <a href="" class="logo text--white">Hafi Yawe</a>
+          <NuxtLink to="/" class="logo text--white">Hafi Yawe</NuxtLink>
           <nav>
               <ul>
                   
