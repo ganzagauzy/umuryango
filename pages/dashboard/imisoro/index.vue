@@ -8,7 +8,7 @@
 				<div class="left">
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Imisor</a>
+							<a href="#">Imisoro</a>
 						</li>
 					</ul>
 				</div>
@@ -21,25 +21,26 @@
 
 			<ul class="box-info">
 				<li>
-					<i class='bx bxs-calendar-check' ></i>
+					
 					<span class="text">
 						<h3>1020</h3>
 						<p>Categories</p>
 					</span>
+					<i class='bx bxs-calendar-check' ></i>
 				</li>
 				<li>
-					<i class='bx bxs-group' ></i>
 					<span class="text">
 						<h3>2834</h3>
 						<p>Services</p>
 					</span>
+					<i class='bx bxs-calendar-check' ></i>
 				</li>
 				<li>
-					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
-						<h3>$2543</h3>
+						<h3>2543</h3>
 						<p>Total</p>
 					</span>
+					<i class='bx bxs-calendar-check' ></i>
 				</li>
 			</ul>
 
@@ -55,14 +56,11 @@
 							max-width="300px"
 							>
 							<template v-slot:activator="{ on, attrs }">
-								<v-btn
-								color="#c6e7ff"
-								class="mb-2"
-								v-bind="attrs"
-								v-on="on"
-								>
-								New Category
-								</v-btn>
+								<v-btn class="btn show-btn" v-bind="attrs"
+								v-on="on" text dark elevation="0" 
+									><p class="btn-text">New Category</p>
+									<span class="square"></span>
+									</v-btn>
 							</template>
 							<v-card>
 								<v-card-title>
@@ -156,14 +154,19 @@
 							max-width="500px"
 							>
 							<template v-slot:activator="{ on, attrs }">
-								<v-btn
+								<!-- <v-btn
 								color="#c6e7ff"
 								class="mb-2"
 								v-bind="attrs"
 								v-on="on"
 								>
 								New Service
-								</v-btn>
+								</v-btn> -->
+								<v-btn class="btn show-btn" v-bind="attrs"
+								v-on="on" text dark elevation="0" 
+									><p class="btn-text">New Service</p>
+									<span class="square"></span>
+									</v-btn>
 							</template>
 							<v-card>
 								<v-card-title>
@@ -569,4 +572,48 @@ layout: 'testadmin'
 </script>
 <style lang="scss" scoped>
 
+.btn {
+  background: #1d4e89;
+  z-index: 5;
+  position: relative;
+  overflow: hidden;
+}
+.service-btn {
+  background: #011936;
+}
+.btn-text {
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+.btn:hover .square {
+  right: -25px;
+  width: 1000%;
+  height: 1000%;
+  transition: 0.25s;
+}
+.square {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+  border-radius: 8px;
+  transition: 0.25s;
+  height: 40px;
+  width: 40px;
+  background: #011936;
+}
+// .service-btn .square {
+//   position: absolute;
+//   top: 50%;
+//   right: -20px;
+//   transform: translateY(-50%);
+//   border-radius: 8px;
+//   transition: 0.25s;
+//   height: 40px;
+//   width: 40px;
+//   background: #1d4e89;
+// }
 </style>

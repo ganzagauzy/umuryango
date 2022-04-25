@@ -4,7 +4,7 @@
     <!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
+			<i class='bx bx-menu'></i>
 			<span class="text">Hafi Yawe</span>
 		</a>
 		<ul class="side-menu top">
@@ -56,10 +56,24 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="#">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">Settings</span>
-				</a>
+				<v-expansion-panels focusable >
+					<v-expansion-panel
+					v-for="(item,i) in 1"
+					:key="i"
+					class="border"
+					>
+					<v-expansion-panel-header color="#F9F9F9" >
+						<a href="#" class="overflow">
+							<i class='bx bxs-cog' ></i>
+							<span class="text">Requests</span>
+						</a>
+					</v-expansion-panel-header>
+					<v-expansion-panel-content>
+						<small class="link"  @click="irembo">Irembo</small><br>
+						<small class="link" @click="imisoro">Imisoro</small>
+					</v-expansion-panel-content>
+					</v-expansion-panel>
+				</v-expansion-panels>
 			</li>
 			<li>
 				<a href="#" class="logout">
@@ -93,9 +107,9 @@
 				<span class="num">8</span>
 			</a> -->
 			<p>hi Admin Admin</p>
-			<a href="#" class="profile">
+			<!-- <a href="#" class="profile">
 				<img src="img/people.png">
-			</a>
+			</a> -->
 		</nav>
 		<!-- NAVBAR -->
       
@@ -111,10 +125,7 @@
 export default {
 head: {
     link: [
-      {
-        rel: "stylesheet",
-        href: "/css/style.css",
-      },
+     
       {
         rel: "stylesheet",
         href: "https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css",
@@ -126,6 +137,14 @@ head: {
       }
     ],
   },
+  methods: {
+	  irembo() {
+		  this.$router.push("/dashboard/irembo");
+	  },
+	  imisoro() {
+		  this.$router.push("/dashboard/imisoro");
+	  },
+  }
 }
 </script>
 
@@ -700,6 +719,16 @@ body {
 		min-width: 420px;
 	}
 }
-
-
+.text-center {
+	margin: 0 30px;
+}
+.overflow {
+	overflow: hidden;
+}
+.border {
+	border: none;
+}
+.link {
+	cursor: pointer;
+}
 </style>

@@ -509,6 +509,7 @@ body {
 }
 #content main .table-data .todo .todo-list li.completed {
 	border-left: 10px solid var(--blue);
+	border-right: 10px solid #011936;
 }
 #content main .table-data .todo .todo-list li.not-completed {
 	border-left: 10px solid var(--orange);
