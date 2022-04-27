@@ -8,7 +8,7 @@
 			<span class="text">Hafi Yawe</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
+			<li class="">
 				<a href="#">
           <NuxtLink to="/dashboard">
 
@@ -21,7 +21,7 @@
 				<a href="#">
           <NuxtLink to="/dashboard/irembo">
 
-					<i class='bx bxs-shopping-bag-alt' ></i>
+					<i class='bx bxs-doughnut-chart' ></i>
             <span class="text">Irembo</span>
         </NuxtLink>
 				</a>
@@ -35,46 +35,36 @@
         </NuxtLink>
 				</a>
 			</li>
+			
 			<li>
 				<a href="#">
-          <NuxtLink to="">
-
-					<i class='bx bxs-message-dots' ></i>
-            <span class="text">Dashboard</span>
-        </NuxtLink>
+					<NuxtLink to="">
+								<i class='bx bxs-doughnut-chart' ></i>
+					
+						<span class="text">Requests</span>
+					</NuxtLink>
 				</a>
 			</li>
 			<li>
 				<a href="#">
 					<NuxtLink to="">
-					<i class='bx bxs-group' ></i>
-          
-            <span class="text">Dashboard</span>
-        </NuxtLink>
+
+								<i class='bx bxs-doughnut-chart' ></i>
+						<span class="text">Payment</span>
+					</NuxtLink>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<NuxtLink to="">
+
+								<i class='bx bxs-doughnut-chart' ></i>
+						<span class="text">Dashboard</span>
+					</NuxtLink>
 				</a>
 			</li>
 		</ul>
 		<ul class="side-menu">
-			<li>
-				<v-expansion-panels focusable >
-					<v-expansion-panel
-					v-for="(item,i) in 1"
-					:key="i"
-					class="border"
-					>
-					<v-expansion-panel-header color="#F9F9F9" >
-						<a href="#" class="overflow">
-							<i class='bx bxs-cog' ></i>
-							<span class="text">Requests</span>
-						</a>
-					</v-expansion-panel-header>
-					<v-expansion-panel-content>
-						<small class="link"  @click="irembo">Irembo</small><br>
-						<small class="link" @click="imisoro">Imisoro</small>
-					</v-expansion-panel-content>
-					</v-expansion-panel>
-				</v-expansion-panels>
-			</li>
 			<li>
 				<a href="#" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -277,6 +267,7 @@ body {
 }
 #sidebar .side-menu li a.logout {
 	color: var(--red);
+	margin-top: 100px;
 }
 #sidebar .side-menu.top li a:hover {
 	color: var(--blue);
@@ -719,9 +710,7 @@ body {
 		min-width: 420px;
 	}
 }
-.text-center {
-	margin: 0 30px;
-}
+
 .overflow {
 	overflow: hidden;
 }

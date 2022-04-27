@@ -1,24 +1,495 @@
 <template>
-  <v-row>
-    <v-col class="text-center">
-      <img
-        src="/v.png"
-        alt="Vuetify.js"
-        class="mb-5"
-      >
-      <blockquote class="blockquote">
-        &#8220;First, solve the problem. Then, write the code.&#8221;
-        <footer>
-          <small>
-            <em>&mdash;John Nuxt</em>
-          </small>
-        </footer>
-      </blockquote>
-    </v-col>
-  </v-row>
+  <v-app app class="header-store accent">
+    <navigation />
+    <v-main>
+      <v-container class="py-10">
+        <v-card class="shadow mx-auto" max-width="400">
+          <v-window v-model="step">
+            <v-window-item :value="1">
+              <v-row>
+                <v-col cols="12">
+                  <v-card-text>
+                    <h5
+                      class="
+                        text-center text-h6
+                        font-weight-bold
+                        text--accent-3
+                        card-height
+                        font-primary
+                      "
+                    >
+                      SIGN IN
+                    </h5>
+                    <h4></h4>
+                    <v-form @submit.prevent="login" class="px-4">
+                      <label>Email</label>
+                      <v-text-field
+                        cols="12"
+                        v-model="email"
+                        type="email"
+                        outlined
+                        dense
+                      ></v-text-field>
+
+                      <label>Password</label>
+                      <v-text-field
+                        v-model="password"
+                        type="password"
+                        outlined
+                        dense
+                      ></v-text-field>
+                      {{ errors }}
+                      <div class="text-center mb-3">
+                        <v-btn
+                          type="submit"
+                          block
+                          elevation="0"
+                          color="primary"
+                        >
+                          Sign in
+                        </v-btn>
+                      </div>
+                    </v-form>
+                  </v-card-text>
+                  <v-card-text>
+                    <p
+                      class="text-center"
+                      style="font-size: 15px; font-weight: 600"
+                    >
+                      Forgot Password?
+                      <span class="text-link" @click="step+=3"
+                        >Reset</span
+                      >
+                    </p>
+                    <p
+                      class="text-center"
+                      style="font-size: 15px; font-weight: 600"
+                    >
+                      Don't have an account?
+                      <span class="text-link" @click="step++"
+                        >Register Here</span
+                      >
+                    </p>
+                  </v-card-text>
+                </v-col>
+              </v-row>
+            </v-window-item>
+
+            <v-window-item :value="2">
+              <v-card-text>
+                <h5
+                  class="
+                    text-center
+                    font-weight-bold
+                    text-h5
+                    font-primary
+                    card-height
+                  "
+                >
+                  Register an Account
+                </h5>
+                <v-form ref="form">
+                  <div>
+                    <label for="">Names</label>
+                    <v-text-field
+                      dense
+                      outlined
+                      v-model="name"
+                      type="text"
+                      :rules="inputRules"
+                    ></v-text-field>
+                  </div>
+                  <div>
+                    <label for="">Telephone</label>
+                    <v-text-field
+                      dense
+                      outlined
+                      type="tel"
+                      v-model="telephone"
+                      :rules="inputRules"
+                    ></v-text-field>
+                  </div>
+                  <div>
+                    <label for="">Shop Name</label>
+                    <v-text-field
+                      dense
+                      outlined
+                      v-model="shopname"
+                      type="text"
+                      :rules="inputRules"
+                    ></v-text-field>
+                  </div>
+                  <div class="text-center mt-3">
+                    <v-btn block color="primary" @click="step++">Next</v-btn>
+                  </div>
+                </v-form>
+              </v-card-text>
+              <v-card-text>
+                <p
+                  class="text-center"
+                  style="font-size: 15px; font-weight: 600"
+                >
+                  Already have an account?
+                  <span class="text-link" @click="step--">Sign In</span>
+                </p>
+              </v-card-text>
+            </v-window-item>
+            <v-window-item :value="3">
+              <v-card-text>
+                <h3
+                  class="
+                    text-center
+                    font-primary font-weight-bold
+                    text-h5
+                    card-height
+                  "
+                >
+                  Finish last steps
+                </h3>
+                <h4></h4>
+                <v-form ref="form">
+                  <div>
+                    <label for="">Description</label>
+                    <v-textarea
+                      clearable
+                      auto-grow
+                      rows="3"
+                      row-height="20"
+                      clear-icon="mdi-close-circle"
+                      v-model="description"
+                      type="text"
+                      outlined
+                      required
+                      :rules="inputRules"
+                      dense
+                    ></v-textarea>
+                  </div>
+                  <div>
+                    <label for="">Email</label>
+                    <v-text-field
+                      dense
+                      outlined
+                      v-model="email"
+                      type="email"
+                      :rules="inputRules"
+                    ></v-text-field>
+                  </div>
+                  <div>
+                    <label for="">Password</label>
+                    <v-text-field
+                      dense
+                      outlined
+                      v-model="password"
+                      type="password"
+                      required
+                      :rules="inputRules"
+                    ></v-text-field>
+                    {{ errors }}
+                  </div>
+                  <div class="text-center mt-3">
+                    <v-btn block color="primary" @click="submit">
+                      Register
+                    </v-btn>
+                  </div>
+                </v-form>
+              </v-card-text>
+              <v-card-text>
+                <p
+                  class="text-center"
+                  style="font-size: 15px; font-weight: 600"
+                >
+                  *After registering go to your email and verify your email
+                  
+                </p>
+                <p
+                  class="text-center"
+                  style="font-size: 15px; font-weight: 600"
+                >
+                  Already have an account?
+                  <span class="text-link" @click="step -= 2">Sign In</span>
+                </p>
+              </v-card-text>
+            </v-window-item>
+            <v-window-item :value="4">
+              <v-row>
+                <v-col cols="12">
+                  <v-card-text>
+                    <h5
+                      class="
+                        text-center text-h6
+                        font-weight-bold
+                        text--accent-3
+                        card-height
+                        font-primary
+                      "
+                    >
+                      Reset Password
+                    </h5>
+                    <h4></h4>
+                    <v-form @submit.prevent="reset" class="px-4">
+                      <label>Email</label>
+                      <v-text-field
+                        cols="12"
+                        v-model="email"
+                        type="email"
+                        outlined
+                        dense
+                      ></v-text-field>
+                      <p>{{ errors }}</p>
+                      <div class="text-center mb-3">
+                        <v-btn
+                          type="submit"
+                          block
+                          elevation="0"
+                          color="primary"
+                        >
+                          Reset
+                        </v-btn>
+                      </div>
+                    </v-form>
+                  </v-card-text>
+                  <v-card-text>
+                    <p
+                  class="text-center"
+                  style="font-size: 15px; font-weight: 600"
+                >
+                  Remember Password?
+                  <span class="text-link" @click="step -= 3">Sign In</span>
+                </p>
+                  </v-card-text>
+                </v-col>
+              </v-row>
+            </v-window-item>
+          </v-window>
+        </v-card>
+
+        <v-snackbar v-model="snackbar" shaped color="primary" right top>
+          <v-icon>{{ icon }}</v-icon> {{ text }}
+
+          <template v-slot:action="{ attrs }">
+            <v-btn
+              color=""
+              text
+              v-bind="attrs"
+              @click="snackbar = false"
+            >
+              Close
+            </v-btn>
+          </template>
+        </v-snackbar>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
+
 <script>
+
 export default {
-  layout: "default1"
-}
+  components: { },
+  data: () => ({
+    email: "",
+    storeid: "",
+    password: "",
+    errors: "",
+    step: "",
+    name: "",
+    text: "",
+    icon: "mdi-checkbox-marked-circle",
+    snackbar: false,
+    shopname: "",
+    telephone: "",
+    description: "",
+    errors: "",
+    inputRules: [(v) => v.length >= 3 || "fill all"],
+  }),
+
+  methods: {
+    submit() {
+      if (this.$refs.form.validate()) {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.email, this.password)
+          .then((user) => {
+            console.log(user.user.uid);
+          
+              firebase
+                .auth()
+                .currentUser.updateProfile({
+                  displayName: this.shopname,
+                  phoneNumber: this.telephone,
+                  email: this.email,
+                })
+                .then(
+                  function () {
+                    console.log("Updated");
+                  },
+                  function (error) {
+                    console.log("Error happened");
+                  }
+                );
+            
+            user.user.sendEmailVerification()
+            db.collection("users")
+              .doc(user.user.uid)
+              .set({
+                userId: user.user.uid,
+                username: this.name,
+                shopname: this.shopname,
+                telephone: this.telephone,
+                description: this.description,
+                email: this.email,
+                timestamp : firebase.firestore.FieldValue.serverTimestamp(),
+              })
+              .then(() => {
+                console.log("document written");
+                this.text = "Successfull Created Account!go to your email to verify your email";
+                this.snackbar = true;
+              })
+              .catch((error) => {
+                console.log("error", error);
+              });
+
+
+              const store = {};
+
+              (store.name = this.name),
+              (store.shopname = this.shopname),
+              (store.userId = user.user.uid),
+              store.timestamp = firebase.firestore.FieldValue.serverTimestamp(),
+            
+
+               db.collection("stores")
+              .add(store)
+              .then((docRef) => {
+                const store = docRef.id
+                this.storeid = store
+                db.collection("users")
+                  .doc(user.user.uid)
+                  .update({
+                    storeid: docRef.id,
+                    timestamp : firebase.firestore.FieldValue.serverTimestamp()
+                  })
+                  .then(() => {
+                    this.loading = false
+                    if(this.loading == false) {
+                      console.log("Document successfully updated!");
+                      
+                    }
+                  })
+                  .catch((error) => {
+                    console.error("Error updating document: ", error);
+                  });
+
+                console.log("added to db");
+              });
+
+            // alert(user)
+
+            // this.$router.push('/auth/login_signup')
+            this.step = 1;
+          })
+          .catch((error) => {
+            this.errors = error;
+          });
+      }
+    },
+    login() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then((user) => {
+          if (!firebase.auth().currentUser.emailVerified) {
+              //resend verification email
+              user.user.sendEmailVerification()
+              
+              firebase
+              .auth()
+              .signOut()
+              .then((res) => {
+                console.log(res);
+                this.user = "";
+                this.$router.push("/auth/verify");
+              });
+              
+          } else {
+              //login
+              this.text = "Successfull Loged in !!!";
+              this.snackbar = true;
+              sessionStorage.setItem("user_id", user.user.uid);
+              sessionStorage.setItem("shop_name", user.user.displayName);
+              this.$router.push("/products");
+              console.log(user);
+              
+          }
+          
+        })
+        .catch((error) => {
+          this.errors = error;
+          console.log({ error });
+          if (error.code) {
+            switch (error.code) {
+              case "auth/network-request-failed":
+                this.errors = "Network error while trying to authenticate.";
+                break;
+              case "auth/user-not-found":
+                this.errors = "Email or password not found.";
+                break;
+              default:
+                this.errors = error.message;
+                break;
+            }
+          }
+        });
+    },
+    
+   reset() {
+      var auth = firebase.auth();
+      var emailAdress = this.email
+
+      auth.sendPasswordResetEmail(emailAdress).then(() => {
+        this.step = 1
+        this.text = "Email sent!";
+        this.snackbar = true;
+      }).catch(error => {
+        console.log(error);
+        this.errors = error
+      });
+    
+      },
+  },
+};
 </script>
+
+<style lang="scss" scoped>
+.card-height {
+  margin: 10px 0;
+}
+
+.font-primary {
+  font-family: var(--body-font) !important;
+}
+
+.card-color {
+  background: #da9412;
+}
+.button {
+  margin: 20px 20px;
+}
+.btn {
+  background: #da9412;
+}
+.align {
+  margin-top: 80px;
+  @media screen and (max-width: 600px) {
+    margin-top: 10px;
+  }
+}
+.header-store {
+  min-height: 100vh;
+}
+.text-link {
+  color: var(--primary-color);
+  cursor: pointer;
+  text-decoration: underline;
+}
+</style>

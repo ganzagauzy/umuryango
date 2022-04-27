@@ -20,68 +20,79 @@
         <v-spacer></v-spacer>
         <v-dialog
           v-model="dialog"
-          max-width="500px"
+          max-width="400px"
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn class="btn show-btn" 
                     v-bind="attrs"
+                    @click="formtittle"
 					v-on="on" text dark elevation="0" 
 					><p class="btn-text">New Service</p>
 					<span class="square"></span>
 			</v-btn>
           </template>
-          <v-card>
-            <v-card-title>
+          <v-card >
+            
+            <v-window v-model="step">
+              <v-window-item :value="1">
+                <v-card-title>
               <span class="text-h5">{{ formTitle }}</span>
             </v-card-title>
-
             <v-card-text>
               <v-container>
                 <v-row>
                   <v-col
                     cols="12"
-                    sm="6"
-                    md="4"
+                    sm="12"
+                    md="12"
                   >
                     <v-text-field
                       v-model="editedItem.name"
                       label="Service name"
+                      outlined
+                      dense
                     ></v-text-field>
                   </v-col>
                   <v-col
                     cols="12"
-                    sm="6"
-                    md="4"
+                    sm="12"
+                    md="12"
                   >
                     <v-text-field
                       v-model="editedItem.category_id"
                       label="Category"
+                      outlined
+                      dense
                     ></v-text-field>
                   </v-col>
                   <v-col
                     cols="12"
-                    sm="6"
-                    md="4"
+                    sm="12"
+                    md="12"
                   >
                     <v-text-field
                       v-model="editedItem.fields"
                       label="Fields"
+                      outlined
+                      dense
                     ></v-text-field>
                   </v-col>
                   <v-col
                     cols="12"
-                    sm="6"
-                    md="4"
+                    sm="12"
+                    md="12"
                   >
                     <v-text-field
                       v-model="editedItem.price"
                       label="Price"
+                      outlined
+                      dense
                     ></v-text-field>
                   </v-col>
                   <!-- <v-col
                     cols="12"
-                    sm="6"
-                    md="4"
+                    sm="12"
+                    md="6"
                   >
                     <v-text-field
                       v-model="editedItem.protein"
@@ -104,11 +115,112 @@
               <v-btn
                 color="blue darken-1"
                 text
+                @click="step ++"
+              >
+                Next
+              </v-btn>
+            </v-card-actions>
+              </v-window-item>
+              <v-window-item :value="2">
+                <v-card-title>
+              <span class="text-h5">Requirements</span>
+            </v-card-title>
+            <v-card-text>
+              
+              <br>
+              <v-container>
+                
+                <v-row>
+                  <v-col
+                    cols="12"
+                    sm="12"
+                    md="12"
+                  >
+                    <v-text-field
+                      v-model="editedItem.requirement1"
+                      label="Requirement1"
+                      outlined
+                      dense
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="12"
+                    md="12"
+                  >
+                    <v-text-field
+                      v-model="editedItem.requirement2"
+                      label="requirement2"
+                      outlined
+                      dense
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="12"
+                    md="12"
+                  >
+                    <v-text-field
+                      v-model="editedItem.requirement3"
+                      label="Requirement3"
+                      outlined
+                      dense
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="12"
+                    md="12"
+                  >
+                    <v-text-field
+                      v-model="editedItem.requirement4"
+                      label="Requirement4"
+                      outlined
+                      dense
+                    ></v-text-field>
+                  </v-col>
+                  <!-- <v-col
+                    cols="12"
+                    sm="12"
+                    md="6"
+                  >
+                    <v-text-field
+                      v-model="editedItem.protein"
+                      label="Protein (g)"
+                    ></v-text-field>
+                  </v-col> -->
+                </v-row>
+              </v-container>
+            </v-card-text>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                color="blue darken-1"
+                text
+                @click="step --"
+              >
+                Back
+              </v-btn>
+              <div>
+                <v-btn v-if="edit == false"
+                color="blue darken-1"
+                text
                 @click="save"
               >
                 Save
               </v-btn>
+                <v-btn v-else
+                color="blue darken-1"
+                text
+                @click="update(item)"
+              >
+                Edit
+              </v-btn>
+              </div>
             </v-card-actions>
+              </v-window-item>
+            </v-window>
           </v-card>
         </v-dialog>
         <v-dialog v-model="dialogDelete" max-width="500px">
@@ -154,10 +266,13 @@
 import axios from "axios";
   export default {
     data: () => ({
+      step:1 ,
+      edit: false,
       dialog: false,
       dialogDelete: false,
       saveDate: false,
       uploading: false,
+      formTitle: '',
       headers: [
         {
           text: 'Name',
@@ -165,10 +280,10 @@ import axios from "axios";
           sortable: false,
           value: 'name',
         },
-        { text: 'Category', value: `category.name` },
+        { text: 'Id', value: 'id' },
         { text: 'Price', value: 'price' },
-        // { text: 'Carbs (g)', value: 'carbs' },
-        // { text: 'Protein (g)', value: 'protein' },
+        { text: 'CategoryId', value: `category_id` },
+        { text: 'Category', value: `requirement1` },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       
@@ -180,6 +295,10 @@ import axios from "axios";
         category_id: '',
         price: '',
         fields: '',
+        requirement1: '',
+        requirement2: '',
+        requirement3: '',
+        requirement4: '',
       },
       defaultItem: {
         name: '',
@@ -189,11 +308,11 @@ import axios from "axios";
       },
     }),
 
-    computed: {
-      formTitle () {
-        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
-      },
-    },
+    // computed: {
+    //   formTitle () {
+    //     return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+    //   },
+    // },
 
     watch: {
       dialog (val) {
@@ -236,26 +355,34 @@ import axios from "axios";
         this.desserts = []
         this.services = []
       },
+      formtittle() {
+        this.formTitle = 'New Service'
+      },
 
       editItem (item) {
-        this.editedIndex = this.desserts.indexOf(item)
+        this.edit = true
+        this.formTitle = 'Edit Service'
+        this.editedIndex = this.services.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialog = true
       },
 
       deleteItem (item) {
-        this.editedIndex = this.desserts.indexOf(item)
+        this.editedIndex = this.services.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialogDelete = true
       },
 
       deleteItemConfirm () {
+        const id = this.editedItem.id;
+        console.log("id",id);
           axios.delete(`https://hafi-yawe.fly.dev/api/services/${this.editedItem.id}`)
           .then(() => {
-              this.desserts.splice(this.editedIndex, 1)
+              this.services.splice(this.editedIndex, 1)
               this.closeDelete()
           }).catch( err => {
               console.log(err);
+              this.closeDelete()
           })
         
       },
@@ -282,39 +409,14 @@ import axios from "axios";
         service.category_id = this.editedItem.category_id
         service.price = this.editedItem.price
         service.fields = this.editedItem.fields
+        service.requirement1 = this.editedItem.requirement1
+        service.requirement2 = this.editedItem.requirement2
+        service.requirement3 = this.editedItem.requirement3
+        service.requirement4 = this.editedItem.requirement4
          
 
         if (this.editedIndex > -1) {
-          if (!this.uploading) {
-            const config = {
-              headers: {
-                Accept: 'application/json'
-              }
-            }
-            this.$nuxt.$loading.start()
-            this.saveData = true
-            await axios.put(`https://hafi-yawe.fly.dev/api/services/${this.editedItem.id}`, portfolio, config).then(data => {
-              Object.assign(this.portfolios[this.editedIndex], this.editedItem)
-              this.$axios.get('/portfolios', config)
-            //   this.$nuxt.$loading.finish()
-              this.saveData = false
-             this.is_submitting = false
-              this.close()
-              console.log("success");
-            //   this.$bvToast.toast('Portfolio Updated Successfully', {
-            //     title: `Updating Portfolio`,
-            //     variant: 'success',
-            //     solid: true
-            //   })
-            })
-              .catch(({response: err}) => {
-             this.is_submitting = false
-                this.saveData = false
-                const errors = err.data
-                this.createError = errors && errors.errors
-                this.$nuxt.$loading.finish()
-              })
-          }
+          console.log("saving");
         } else {
           if (!this.uploading) {
             const config = {
@@ -324,7 +426,7 @@ import axios from "axios";
             this.saveData = true
             await axios.post(`https://hafi-yawe.fly.dev/api/services`, service, config).then(data => {
               this.services.push(this.editedItem)
-              this.$axios.get('/services', config)
+              axios.get('https://hafi-yawe.fly.dev/api/services', config)
             //   this.$nuxt.$loading.finish()
               this.saveData = false
              this.is_submitting = false
@@ -349,6 +451,50 @@ import axios from "axios";
                 // })
               })
           }
+        }
+      
+      },
+     async update (item) {
+        const service = {}
+        service.name = this.editedItem.name
+        service.category_id = this.editedItem.category_id
+        service.price = this.editedItem.price
+        service.fields = this.editedItem.fields
+         
+
+        if (this.editedIndex > -1) {
+          if (!this.uploading) {
+            const config = {
+              headers: {
+                Accept: 'application/json'
+              }
+            }
+            // this.$nuxt.$loading.start()
+            this.saveData = true
+            await axios.put(`https://hafi-yawe.fly.dev/api/services/${this.editedItem.id}`, service, config).then(data => {
+              Object.assign(this.services[this.editedIndex], this.editedItem)
+              axios.get('https://hafi-yawe.fly.dev/api/services', config)
+            //   this.$nuxt.$loading.finish()
+              this.saveData = false
+             this.is_submitting = false
+              this.close()
+              console.log("success");
+            //   this.$bvToast.toast('Portfolio Updated Successfully', {
+            //     title: `Updating Portfolio`,
+            //     variant: 'success',
+            //     solid: true
+            //   })
+            })
+              .catch(({response: err}) => {
+             this.is_submitting = false
+                this.saveData = false
+                const errors = err.data
+                this.createError = errors && errors.errors
+                // this.$nuxt.$loading.finish()
+              })
+          }
+        } else {
+          console.log("for editing");
         }
       
       },

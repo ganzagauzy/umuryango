@@ -48,10 +48,10 @@
 			<div class="table-data">
                 <div class="todo">
 					<div class="head">
-						<h3>Categories</h3>
+						Rate1
 						<!-- <i class='bx bx-plus' >New Category</i> -->
 
-						<v-dialog
+						<!-- <v-dialog
 							v-model="dialogCategory"
 							max-width="300px"
 							>
@@ -102,38 +102,23 @@
 								</v-btn>
 								</v-card-actions>
 							</v-card>
-							</v-dialog>
+							</v-dialog> -->
 						
 
 					</div>
-					<ul class="todo-list pb-3" v-for="category in categories.categories"
+					<!-- <ul class="todo-list pb-3" v-for="category in categories.categories"
 						:key="category.id">
 						<li class="completed">
 							<p> {{category.name}} {{category.id}} </p>
 							<i class='bx bx-dots-vertical-rounded' ></i>
 						</li>
-						<!-- <li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li> -->
-					</ul>
+						
+					</ul> -->
 					
 				</div>
 				<div class="order">
-
-					<serviceirembo />
+                    Rate2
+					<!-- <serviceirembo /> -->
 
 					<!-- <div class="head">
 						<h3>Services</h3>
@@ -203,9 +188,8 @@
 
 <script>
 import axios from "axios";
-import serviceirembo from '../../components/serviceirembo.vue';
 export default {
-  components: { serviceirembo },
+  components: {  },
   head: {
     
     link: [
@@ -231,8 +215,9 @@ export default {
       editedItem: {
         name: '',
         category: '',
-        price: '',
-        fields: '',
+        fat: '',
+        carbs: '',
+        protein: '',
       },
       defaultItem: {
         name: '',
