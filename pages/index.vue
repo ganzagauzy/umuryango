@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="absolute">
+    <!-- <div class="absolute">
       <div class="top2">
         <div class="category">
           <v-container class="d-flex flex-wrap justify-content-space-between container">
@@ -15,7 +15,7 @@
         </v-container>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -28,10 +28,25 @@ export default {
             categories: [],
         }
     },
+    head: {
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        // {'http-equiv' : "refresh", content : "0", url : "http://localhost:3000/services"},
+        
+        // { charset: 'utf-8' },
+        // { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        // { hid: 'description', name: 'description', content: '' },
+        // { name: 'format-detection', content: 'telephone=no' }
+      ],
+        link: [],
+        script: [],
+    },
   mounted() {
     this.header()
+    this.$router.push("/services");
   },
   async created () {
+        // this.$router.push("/services");
         const config = {
             headers: {
                 'Accept': 'application/json'

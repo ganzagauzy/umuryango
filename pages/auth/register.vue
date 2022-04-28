@@ -134,6 +134,7 @@ export default {
           this.name = "",
           this.email = "",
           this.password = ""
+          this.$router.push("/auth/login");
         })
         .catch( error => {
           this.errors = error
@@ -172,7 +173,7 @@ export default {
   }
 }
 .header-store {
-    background: #E3F2FD;
+    background: #AAAAAA;
   min-height: 100vh;
 }
 .text-link {

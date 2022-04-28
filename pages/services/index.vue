@@ -2,12 +2,12 @@
   <div class="main">
     <div class="absolute">
       <div class="top2">
-        <div class="show-btn d-flex flex-wrap justify-content-space-between">
-          <v-btn @click="irembo">Irembo</v-btn>
-        <v-btn @click="imisoro">Imisoro</v-btn>
+        <div class="show-btn irembo-imisoro">
+          <v-btn class="btn-btn" @click="irembo">Irembo</v-btn>
+        <v-btn class="btn-btn 2" @click="imisoro">Imisoro</v-btn>
         </div>
         <div class="category" v-if="showirembo == true">
-          <h4>Irembo</h4>
+          <h2 class="text-center">Irembo</h2>
           <br>
           <v-container class="d-flex flex-wrap justify-content-space-between container">
           <!-- <h4>Categories</h4> -->
@@ -42,7 +42,7 @@
         </v-container>
         </div>
         <div class="category" v-if="showimisoro == true">
-           <h4>Imisoro</h4>
+           <h2 class="text-center">Imisoro</h2>
           <br>
           <v-container class="d-flex flex-wrap justify-content-space-between container">
          
@@ -210,5 +210,21 @@ li {
   justify-content: space-around;
   align-items: center;
 }
+.irembo-imisoro {
+  padding-top: 20px;
+  padding-left: 80px;
+  padding-right: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  
+  
+}
+.btn-btn {
+     @media screen and (max-width:375px) {
+      margin-top: 10px;
+  }
+  }
 
 </style>

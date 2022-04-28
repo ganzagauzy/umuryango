@@ -5,13 +5,13 @@
       <div class="d-flex flex-wrap justify-content-space-between display-flex">
         
           <v-card 
-          width="400">
+          width="400" class="border-radius">
         <v-card-title>
-          <span class="text-h5">Umuryango</span>
+          <span class="text-h5"> {{service.name}} </span>
         </v-card-title>
         <v-card-text>
           <v-container>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, at.</p>
+            <p>Price: {{service.price}} </p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, at.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, at.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, at.</p>
@@ -25,78 +25,55 @@
         
 
         <v-card 
-          width="700">
+          width="700" class="border-radius apply-top">
         <v-card-title>
-          <span class="text-h5">User Request</span>
+          <span class="text-h5">Apply</span>
         </v-card-title>
         <v-card-text>
           <v-container>
             <v-row>
               <v-col
                 cols="12"
-                sm="6"
-                md="4"
               >
                 <v-text-field
-                  label="Legal first name*"
+                  label="Name*"
                   required
+                  outlined
+                  dense
                 ></v-text-field>
               </v-col>
-              <v-col
-                cols="12"
-                sm="6"
-                md="4"
-              >
-                <v-text-field
-                  label="Legal middle name"
-                  hint="example of helper text only on focus"
-                ></v-text-field>
-              </v-col>
-              <v-col
-                cols="12"
-                sm="6"
-                md="4"
-              >
-                <v-text-field
-                  label="Legal last name*"
-                  hint="example of persistent helper text"
-                  persistent-hint
-                  required
-                ></v-text-field>
-              </v-col>
+              
+              
               <v-col cols="12">
                 <v-text-field
                   label="Email*"
                   required
+                  outlined
+                  dense
                 ></v-text-field>
               </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  label="Password*"
-                  type="password"
+              
+              <v-col
+              >
+                <v-select
+                  :items="['Irembo', 'Imisor']"
+                  label="Type*"
                   required
-                ></v-text-field>
+                  outlined
+                  dense
+                ></v-select>
               </v-col>
               <v-col
-                cols="12"
-                sm="6"
               >
                 <v-select
                   :items="['0-17', '18-29', '30-54', '54+']"
                   label="Age*"
                   required
+                  outlined
+                  dense
                 ></v-select>
               </v-col>
-              <v-col
-                cols="12"
-                sm="6"
-              >
-                <v-autocomplete
-                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                  label="Interests"
-                  multiple
-                ></v-autocomplete>
-              </v-col>
+              
             </v-row>
           </v-container>
           <small>*indicates required field</small>
@@ -121,8 +98,42 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
 
+   data() {
+     return {
+            service: '',
+            
+        }
+    },
+     computed: {
+    id() {
+      return this.$route.params.storeid;
+    },
+  },
+  async created () {
+    const id = this.$route.params.id;
+    console.log(id);
+          const config = {
+              headers: {
+                  'Accept': 'application/json'
+
+              }
+          }
+          try {
+          const res = await axios.get(`https://hafi-yawe.fly.dev/api/services/${id}`, config);
+          
+          this.service = res.data
+          console.log(this.service);
+
+          }
+          catch(error) {
+              console.log(error);
+          }
+
+
+      },
 }
 </script>
 
@@ -132,7 +143,7 @@ export default {
 }
 .display-flex {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 .btn {
@@ -170,5 +181,13 @@ export default {
     background: #065A82;
     // background: #011936;
    
+}
+.border-radius {
+  border-radius: 20px;
+}
+.apply-top {
+  @media screen and (max-width:1248px) {
+    margin-top: 30px;
+  }
 }
 </style>

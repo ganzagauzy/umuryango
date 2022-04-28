@@ -48,7 +48,7 @@
 			<div class="table-data">
                 <div class="todo">
 					<div class="head">
-						Rate1
+						<rate-1 />
 						<!-- <i class='bx bx-plus' >New Category</i> -->
 
 						<!-- <v-dialog
@@ -117,7 +117,7 @@
 					
 				</div>
 				<div class="order">
-                    Rate2
+					<rate-2 />
 					<!-- <serviceirembo /> -->
 
 					<!-- <div class="head">
@@ -188,8 +188,10 @@
 
 <script>
 import axios from "axios";
+import Rate2 from '../../components/rate2.vue';
+import Rate1 from '../../components/rate1.vue';
 export default {
-  components: {  },
+  components: {Rate2, Rate1 },
   head: {
     
     link: [

@@ -283,7 +283,7 @@ import axios from "axios";
         { text: 'Id', value: 'id' },
         { text: 'Price', value: 'price' },
         { text: 'CategoryId', value: `category_id` },
-        { text: 'Category', value: `requirement1` },
+        // { text: 'Category', value: `requirement1` },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       
@@ -454,7 +454,7 @@ import axios from "axios";
         }
       
       },
-     async update (item) {
+     async update () {
         const service = {}
         service.name = this.editedItem.name
         service.category_id = this.editedItem.category_id

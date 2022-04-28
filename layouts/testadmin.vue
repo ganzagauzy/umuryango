@@ -8,7 +8,7 @@
 			<span class="text">Hafi Yawe</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="">
+			<li class="active">
 				<a href="#">
           <NuxtLink to="/dashboard">
 
@@ -47,7 +47,7 @@
 			</li>
 			<li>
 				<a href="#">
-					<NuxtLink to="">
+					<NuxtLink to="/dashboard/payment">
 
 								<i class='bx bxs-doughnut-chart' ></i>
 						<span class="text">Payment</span>

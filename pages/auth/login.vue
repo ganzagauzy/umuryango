@@ -163,7 +163,7 @@ export default {
   }
 }
 .header-store {
-    background: #E3F2FD;
+    background: #AAAAAA;
   min-height: 100vh;
 }
 .text-link {

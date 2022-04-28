@@ -8,7 +8,7 @@
 				<div class="left">
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Irembo</a>
+							<a href="#">Payment</a>
 						</li>
 					</ul>
 				</div>
@@ -18,101 +18,158 @@
 				</a> -->
 				
 			</div>
-
-			<!-- <ul class="box-info">
-				<li>
-					
-					<span class="text">
-						<h3>1020</h3>
-						<p>Categories</p>
-					</span>
-					<i class='bx bxs-calendar-check' ></i>
-				</li>
-				<li>
-					<span class="text">
-						<h3> {{servicesize}} </h3>
-						<p>Services</p>
-					</span>
-					<i class='bx bxs-calendar-check' ></i>
-				</li>
-				<li>
-					<span class="text">
-						<h3> {{servicesize+servicesize}} </h3>
-						<p>Total</p>
-					</span>
-					<i class='bx bxs-calendar-check' ></i>
-				</li>
-			</ul> -->
-
-			
-			
 			<div class="table-data">
                 
 				<div class="order">
 
-					<categoriesirembo />
+					<v-data-table
+						:headers="headers"
+						:items="desserts"
+						sort-by="calories"
+						class="elevation-1"
+					>
+						<template v-slot:top>
+						<v-toolbar
+							flat
+						>
+							<v-toolbar-title><h3>Payment</h3></v-toolbar-title>
+							<v-divider
+							class="mx-4"
+							inset
+							vertical
+							></v-divider>
+							<v-spacer></v-spacer>
+							<v-dialog
+							v-model="dialog"
+							max-width="500px"
+							>
+							<template v-slot:activator="{ on, attrs }">
+								
+								<v-btn class="btn show-btn" v-bind="attrs"
+								v-on="on" text dark elevation="0" 
+									><p class="btn-text">0 Rwf</p>
+									<span class="square"></span>
+									</v-btn>
+							</template>
+							<v-card>
+								<v-card-title>
+								<span class="text-h5">{{ formTitle }}</span>
+								</v-card-title>
 
-					<!-- <div class="head">
-						<h3>Services</h3>
-						<i class='bx bx-plus' >New Service</i>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-						</tbody>
-					</table> -->
-				</div>
-				<div class="order">
+								<v-card-text>
+								<v-container>
+									<v-row>
+									<v-col
+										cols="12"
+										sm="6"
+										md="4"
+									>
+										<v-text-field
+										v-model="editedItem.name"
+										label="Dessert name"
+										></v-text-field>
+									</v-col>
+									<v-col
+										cols="12"
+										sm="6"
+										md="4"
+									>
+										<v-text-field
+										v-model="editedItem.calories"
+										label="Calories"
+										></v-text-field>
+									</v-col>
+									<v-col
+										cols="12"
+										sm="6"
+										md="4"
+									>
+										<v-text-field
+										v-model="editedItem.fat"
+										label="Fat (g)"
+										></v-text-field>
+									</v-col>
+									<v-col
+										cols="12"
+										sm="6"
+										md="4"
+									>
+										<v-text-field
+										v-model="editedItem.carbs"
+										label="Carbs (g)"
+										></v-text-field>
+									</v-col>
+									<v-col
+										cols="12"
+										sm="6"
+										md="4"
+									>
+										<v-text-field
+										v-model="editedItem.protein"
+										label="Protein (g)"
+										></v-text-field>
+									</v-col>
+									</v-row>
+								</v-container>
+								</v-card-text>
 
-					<serviceirembo />
+								<v-card-actions>
+								<v-spacer></v-spacer>
+								<v-btn
+									color="blue darken-1"
+									text
+									@click="close"
+								>
+									Cancel
+								</v-btn>
+								<v-btn
+									color="blue darken-1"
+									text
+									@click="save"
+								>
+									Save
+								</v-btn>
+								</v-card-actions>
+							</v-card>
+							</v-dialog>
+							<v-dialog v-model="dialogDelete" max-width="500px">
+							<v-card>
+								<v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
+								<v-card-actions>
+								<v-spacer></v-spacer>
+								<v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
+								<v-btn color="blue darken-1" text @click="deleteItemConfirm">OK</v-btn>
+								<v-spacer></v-spacer>
+								</v-card-actions>
+							</v-card>
+							</v-dialog>
+						</v-toolbar>
+						</template>
+						<template v-slot:item.actions="{ item }">
+						<v-icon
+							small
+							class="mr-2"
+							@click="editItem(item)"
+						>
+							mdi-pencil
+						</v-icon>
+						<v-icon
+							small
+							@click="deleteItem(item)"
+						>
+							mdi-delete
+						</v-icon>
+						</template>
+						<template v-slot:no-data>
+						<v-btn
+							color="primary"
+							@click="initialize"
+						>
+							Reset
+						</v-btn>
+						</template>
+					</v-data-table>
+
 
 					<!-- <div class="head">
 						<h3>Services</h3>
@@ -182,10 +239,7 @@
 
 <script>
 import axios from "axios";
-import serviceirembo from '../../../components/serviceirembo.vue';
-import Categoriesirembo from '../../../components/categoriesirembo.vue';
 export default {
-  components: { serviceirembo, Categoriesirembo },
   head: {
     
     link: [
@@ -202,25 +256,35 @@ export default {
       dialog: false,
       dialogDelete: false,
       dialogCategory: false,
-      
+      headers: [
+        {
+          text: 'Name',
+          align: 'start',
+          sortable: false,
+          value: 'name',
+        },
+        { text: 'Service', value: 'calories' },
+        { text: 'Price', value: 'fat' },
+        { text: 'Status', value: 'carbs' },
+        // { text: 'Protein (g)', value: 'protein' },
+        { text: 'Actions', value: 'actions', sortable: false },
+      ],
       desserts: [],
-      services: [],
       categories: [],
-	  servicesize: '',
       editedIndex: -1,
       editedItem: {
         name: '',
-        category: '',
-        fat: '',
-        carbs: '',
-        protein: '',
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        protein: 0,
       },
       defaultItem: {
         name: '',
-        calories: '',
-        fat: '',
-        carbs: '',
-        protein: '',
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        protein: 0,
       },
     }),
 
@@ -239,65 +303,36 @@ export default {
       },
     },
 
-    
+    created () {
+    },
 
-	
+	// callin api
 
-	created() {
-		// this.getCategories()
-		this.getServices()
-		this.initialize()
+	async created() {
+    const config = {
+      headers: {
+        Accept: "application/json",
+      },
+    };
+    try {
+      const res = await axios.get(
+        "https://hafi-yawe.fly.dev/api/categories",
+        config
+      );
+
+      this.categories = res.data;
+      console.log(this.categories);
+    } catch (error) {
+      console.log(error);
+    }
+      this.initialize()
 
   },
 
-	
-
     methods: {
-		// callin api
-	// 	async getCategories() {
-	// 	const config = {
-	// 	headers: {
-	// 		Accept: "application/json",
-	// 	},
-	// 	};
-	// 	try {
-	// 	const res = await axios.get(
-	// 		"https://hafi-yawe.fly.dev/api/categories",
-	// 		config
-	// 	);
-
-	// 	this.categories = res.data;
-	// 	console.log(this.categories);
-	// 	} catch (error) {
-	// 	console.log(error);
-	// 	}
-		
-
-	// },
-		async getServices() {
-		const config = {
-		headers: {
-			Accept: "application/json",
-		},
-		};
-		try {
-		const res = await axios.get(
-			"https://hafi-yawe.fly.dev/api/services",
-			config
-		);
-
-		
-		this.servicesize = res.data.services.length
-		console.log(this.servicesize);
-		} catch (error) {
-		console.log(error);
-		}
-		
-
-	},
       initialize () {
-        this.desserts = [],
-        this.services = []
+        this.desserts = [
+        ]
       },
 
       editItem (item) {
