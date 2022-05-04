@@ -65,13 +65,20 @@ export default {
       'laravelPassport': {
         provider: 'laravel/passport',
         endpoints: {
-          userInfo: '...'
+          login: { url: 'https://hafi-yawe.fly.dev/api/login', method: 'post' },
+          logout: { url: 'https://hafi-yawe.fly.dev/api/auth/logout', method: 'post' },
+          user: { url: 'https://hafi-yawe.fly.dev/api/users', method: 'get' },
         },
         url: '...',
         clientId: '...',
         clientSecret: '...'
       },
     }
+  },
+  redirect: {
+    login: '/auth/login',
+    logout: '/auth/login',
+    home: '/',
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

@@ -3,15 +3,16 @@
     <div class="absolute">
       
       <div class="top2">
-        <div class="show-btn irembo-imisoro">
-          <div>
-          <v-btn class="btn-btn" @click="irembo">Irembo</v-btn>
+        <v-container class="show-btn">
+          <div class="irembo-btn">
+          <v-btn class="btn-irembo" @click="">Irembo</v-btn>
           </div>
-          <div>
-          <v-btn class="btn-btn btn-btn2" @click="imisoro">Imisoro</v-btn>
+          <div class="imisoro-btn">
+          <v-btn class="btn-imisoro" @click="getTax">Imisoro</v-btn>
           </div>
-        </div>
-        <div class="category" v-if="showirembo == true">
+        
+        </v-container>
+        <div class="category" >
           <h2 class="text-center">Irembo</h2>
           <br>
           <v-container class="d-flex flex-wrap justify-content-space-between container">
@@ -46,40 +47,7 @@
                     </div>
         </v-container>
         </div>
-        <div class="category" v-if="showimisoro == true">
-           <h2 class="text-center">Imisoro</h2>
-          <br>
-          <v-container class="d-flex flex-wrap justify-content-space-between container">
-         
-            <div v-for="tax in taxes"
-                    :key="tax.id" class="cat-serv">
-                     <div>
-                          
-                    <b>{{tax.name}}</b>
-                    <b>{{tax.id}}</b>
-                    <br>
-                    <!-- {{category.services}} -->
-                    <div v-for="service in category.services"
-                    :key="service.id" class="services">
-                    
-                    <br>
-                    <NuxtLink
-                    :to="{
-                      name: 'services-id',
-                      params: { id: service.id },
-                    }"
-                    class="nuxt-link"
-                  >
-                    Service
-                    {{service.id}}
-                    {{service.name}}
-                    </NuxtLink>
-                    </div>
-                     </div>
-                     <br>
-                    </div>
-        </v-container>
-        </div>
+        
 
 
 
@@ -106,7 +74,7 @@ export default {
     },
   mounted() {
     this.header();
-    this.Tax();
+    // this.Tax();
   },
   async created () {
         const config = {
@@ -139,7 +107,7 @@ export default {
           //     top.classList.toggle('sticky');
           // });
       },
-      async Tax () {
+      async getTax () {
         const config = {
             headers: {
                 'Accept': 'application/json'
@@ -187,6 +155,7 @@ li {
   top: 80%;
 }
 .top2 {
+  position: relative;
   padding-top: 100px;
 }
 .category {
@@ -210,14 +179,12 @@ li {
 
 
 .show-btn {
-  margin-top: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
 .irembo-imisoro {
-  margin-top: 10px;
   margin-left: 80px;
   margin-right: 80px;
   display: flex;
@@ -233,5 +200,13 @@ li {
       margin-top: 10px;
   }
   }
+  
+  .irembo-btn {
+     margin-left: 60px ;
+  }
+  .imisoro-btn {
+     margin-right: -400px ;
+  }
+  
 
 </style>

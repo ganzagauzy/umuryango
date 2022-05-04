@@ -152,7 +152,7 @@ export default {
       editedIndex: -1,
       editedItem: {
         name: '',
-        type: '',
+        type_id: '',
         
       },
     }),
@@ -231,7 +231,7 @@ export default {
     async save () {
         const category = {}
         category.name = this.editedItem.name
-        category.type = this.editedItem.type
+        category.type_id = this.editedItem.type_id
          
             const config = {
               headers: {"content-type": "application/json"}
@@ -239,13 +239,14 @@ export default {
             // this.$nuxt.$loading.start()
             // this.saveData = true
             await axios.post(`https://hafi-yawe.fly.dev/api/categories`, category, config).then(data => {
-              this.categories.push(this.editedItem)
+              this.refreshData()
               axios.get('https://hafi-yawe.fly.dev/api/categories', config)
             //   this.$nuxt.$loading.finish()
             //   this.saveData = false
             //  this.is_submitting = false
               // this.close()
               console.log("succesfull created");
+              this.dialog = false
             //   this.$bvToast.toast('Portfolio Created Successfully', {
             //     title: `Creating Portfolio`,
             //     variant: 'success',
@@ -254,7 +255,7 @@ export default {
             })
               .catch(({response: err}) => {
                 this.saveData = false
-                const errors = err.data
+                const errors = err
                 this.createError = errors && errors.errors
                 // this.$nuxt.$loading.finish()
                 console.log("failed");
@@ -271,7 +272,7 @@ export default {
     async editCategory () {
         const category = {}
         category.name = this.editedItem.name
-        category.type = this.editedItem.type
+        category.type_id = this.editedItem.type_id
          
             const config = {
               headers: {"content-type": "application/json"}

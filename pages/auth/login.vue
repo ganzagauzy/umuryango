@@ -39,6 +39,8 @@
                         dense
                       ></v-text-field>
                       {{ errors }}
+                      <br>
+                      <br>
                       <div class="text-center mb-3">
                         <!-- <v-btn
                           type="submit"
@@ -114,6 +116,9 @@ export default {
       register () {
         this.$router.push("/auth/register");
       },
+      //  submit () {
+      //   this.$auth.loginWith('laravelPassport')
+      // },
       async submit () {
          await axios
         .post("https://hafi-yawe.fly.dev/api/login", {
@@ -121,8 +126,21 @@ export default {
           password: this.password,
         })
         .then((res) => {
+
           console.log(res);
-          console.log("successfully loged in  a user")
+          const response = res.data
+          console.log(response);
+          console.log(response.Message);
+          if(response.Message == 'Unauthorised') {
+              this.errors = "you are not authorise"
+          }
+          else {
+              console.log(response.user.name);
+              console.log("successfully loged in  a user")
+              this.$router.push("/dashboard");
+          }
+          
+
           this.email = "",
           this.password = ""
         })
