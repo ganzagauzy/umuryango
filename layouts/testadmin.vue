@@ -174,7 +174,7 @@ body {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 280px;
+	width: 220px;
 	height: 100%;
 	background: var(--light);
 	z-index: 2000;
@@ -286,8 +286,8 @@ body {
 /* CONTENT */
 #content {
 	position: relative;
-	width: calc(100% - 280px);
-	left: 280px;
+	width: calc(100% - 220px);
+	left: 220px;
 	transition: .3s ease;
 }
 #sidebar.hide ~ #content {
@@ -339,7 +339,9 @@ body {
 #content nav form {
 	max-width: 400px;
 	width: 100%;
+	margin-left: auto;
 	margin-right: auto;
+	
 }
 #content nav form .form-input {
 	display: flex;
@@ -397,29 +399,29 @@ body {
 	object-fit: cover;
 	border-radius: 50%;
 }
-#content nav .switch-mode {
-	display: block;
-	min-width: 50px;
-	height: 25px;
-	border-radius: 25px;
-	background: var(--grey);
-	cursor: pointer;
-	position: relative;
-}
-#content nav .switch-mode::before {
-	content: '';
-	position: absolute;
-	top: 2px;
-	left: 2px;
-	bottom: 2px;
-	width: calc(25px - 4px);
-	background: var(--blue);
-	border-radius: 50%;
-	transition: all .3s ease;
-}
-#content nav #switch-mode:checked + .switch-mode::before {
-	left: calc(100% - (25px - 4px) - 2px);
-}
+// #content nav .switch-mode {
+// 	display: block;
+// 	min-width: 50px;
+// 	height: 25px;
+// 	border-radius: 25px;
+// 	background: var(--grey);
+// 	cursor: pointer;
+// 	position: relative;
+// }
+// #content nav .switch-mode::before {
+// 	content: '';
+// 	position: absolute;
+// 	top: 2px;
+// 	left: 2px;
+// 	bottom: 2px;
+// 	width: calc(25px - 4px);
+// 	background: var(--blue);
+// 	border-radius: 50%;
+// 	transition: all .3s ease;
+// }
+// #content nav #switch-mode:checked + .switch-mode::before {
+// 	left: calc(100% - (25px - 4px) - 2px);
+// }
 /* NAVBAR */
 
 

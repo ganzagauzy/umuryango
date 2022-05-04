@@ -15,7 +15,7 @@
                         dark
                         nuxt
                         to="/"
-                      ><p class="btn-text">Home</p><span class="square"></span>
+                      ><p class="btn-text">Home</p><span class=""></span>
                       </v-btn>
                   </li>
                   <li>
@@ -23,7 +23,7 @@
                         dark
                         nuxt
                         to="/auth/register"
-                      ><p class="btn-text">Register</p><span class="square"></span>
+                      ><p class="btn-text">Register</p><span class=""></span>
                       </v-btn>
                   </li>
                   <li>
@@ -31,7 +31,7 @@
                         text dark
                         nuxt
                         to="/auth/login"
-                        ><p class="btn-text">Log in</p><span class="square"></span></v-btn>
+                        ><p class="btn-text">Log in</p><span class=""></span></v-btn>
                   </li>
                   
                   <div class="nav-toggle-account-btn px-5">

@@ -80,7 +80,7 @@
                             <v-btn v-else
                                 color="blue darken-1"
                                 text
-                                @click="save"
+                                @click="editCategory"
                             >
                                 Edit
                             </v-btn>
@@ -146,6 +146,7 @@ export default {
 	  servicesize: '',
       edit: false,
       dialog: false,
+      editingId: '',
       formTitle: 'New Category',
       items: ['1', '2'],
       editedIndex: -1,
@@ -163,12 +164,38 @@ export default {
 		// this.initialize()
 
   },
+  mounted(){
+    this.refreshData()
+  },
   
   
 
 	
 
     methods: {
+
+      async refreshData() {
+		const config = {
+		headers: {
+			Accept: "application/json",
+		},
+		};
+		try {
+		const res = await axios.get(
+			"https://hafi-yawe.fly.dev/api/categories",
+			config
+		);
+
+		
+		this.categories = res.data
+		// this.servicesize = res.data.services.length
+		// console.log(this.servicesize);
+		} catch (error) {
+		console.log(error);
+		}
+		
+
+	},
 		// callin api
 		
 		async getCategories() {
@@ -193,6 +220,7 @@ export default {
 		
 
 	},
+		
     close () {
         this.dialog = false
         this.$nextTick(() => {
@@ -239,6 +267,40 @@ export default {
           
         },
 
+
+    async editCategory () {
+        const category = {}
+        category.name = this.editedItem.name
+        category.type = this.editedItem.type
+         
+            const config = {
+              headers: {"content-type": "application/json"}
+            };
+            // this.$nuxt.$loading.start()
+            // this.saveData = true
+            await axios.put(`https://hafi-yawe.fly.dev/api/categories/${this.editingId}`, category, config).then( () => {
+              
+              axios.get('https://hafi-yawe.fly.dev/api/categories', config)
+              // this.categories.push(category)
+              this.refreshData()
+              console.log("success");
+              this.dialog = false
+            }).catch(err => {
+                this.saveData = false
+                console.log(err);
+                // const errors = err.data
+                // this.createError = errors && errors.errors
+                // this.$nuxt.$loading.finish()
+                console.log("failed");
+                // this.$bvToast.toast('Portfolio Creating Failed', {
+                //   title: `Creating Portfolio`,
+                //   variant: 'danger',
+                //   solid: true
+                // })
+              })
+          
+        },
+
         remove(category) {
          axios.delete(`https://hafi-yawe.fly.dev/api/categories/${category.id}`)
           .then(() => {
@@ -256,7 +318,9 @@ export default {
           this.dialog = true
           this.editedItem.name = category.name
           this.formTitle = "Edit Category"
-        console.log("edit",category);
+          this.editingId = category.id
+          console.log(this.editingId);
+        console.log("edit",category,);
       },
       
       },

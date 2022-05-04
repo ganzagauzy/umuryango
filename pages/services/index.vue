@@ -1,10 +1,15 @@
 <template>
   <div class="main">
     <div class="absolute">
+      
       <div class="top2">
         <div class="show-btn irembo-imisoro">
+          <div>
           <v-btn class="btn-btn" @click="irembo">Irembo</v-btn>
-        <v-btn class="btn-btn 2" @click="imisoro">Imisoro</v-btn>
+          </div>
+          <div>
+          <v-btn class="btn-btn btn-btn2" @click="imisoro">Imisoro</v-btn>
+          </div>
         </div>
         <div class="category" v-if="showirembo == true">
           <h2 class="text-center">Irembo</h2>
@@ -205,19 +210,21 @@ li {
 
 
 .show-btn {
-  padding-top: 30px;
+  margin-top: 30px;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.irembo-imisoro {
-  padding-top: 20px;
-  padding-left: 80px;
-  padding-right: 80px;
-  display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+}
+.irembo-imisoro {
+  margin-top: 10px;
+  margin-left: 80px;
+  margin-right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
   
   
 }
