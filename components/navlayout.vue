@@ -356,7 +356,7 @@ header ul li:hover .square {
     position: absolute;
     background: #011936;
     top: 45%;
-    bottom: 0;
+    bottom: -45%;
     border-radius: 15px;
     left: 10%;
     max-width: 80%;
