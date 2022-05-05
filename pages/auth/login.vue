@@ -135,7 +135,13 @@ export default {
               this.errors = "you are not authorise"
           }
           else {
-              console.log(response.user.name);
+              
+              let token = response.access_token
+              let user = response.user
+              // console.log(token);
+              // console.log(user);
+              this.$store.commit("setToken", token);
+              this.$store.commit("setUser", user);
               console.log("successfully loged in  a user")
               this.$router.push("/dashboard");
           }

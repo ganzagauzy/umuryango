@@ -351,7 +351,8 @@ export default {
     },
 
 
-layout: 'testadmin'
+	layout: 'testadmin',
+	middleware: 'login'
 }
 </script>
 <style lang="scss" scoped>

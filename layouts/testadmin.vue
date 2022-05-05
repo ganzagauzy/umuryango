@@ -37,7 +37,7 @@
 			</li>
 			
 			<li>
-				<a href="#">
+				<a href="">
 					<NuxtLink to="">
 								<i class='bx bxs-doughnut-chart' ></i>
 					
@@ -65,8 +65,8 @@
 			</li>
 		</ul>
 		<ul class="side-menu">
-			<li>
-				<a href="#" class="logout">
+			<li @click="logout">
+				<a  @click="logout" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -96,7 +96,7 @@
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>
 			</a> -->
-			<p>hi Admin Admin</p>
+			<p>hi {{this.$store.state.user.name}}</p>
 			<!-- <a href="#" class="profile">
 				<img src="img/people.png">
 			</a> -->
@@ -134,6 +134,11 @@ head: {
 	  imisoro() {
 		  this.$router.push("/dashboard/imisoro");
 	  },
+	  logout() {
+		  this.$router.push("/auth/login");
+		  window.localStorage.removeItem('token')
+		  window.localStorage.removeItem('user')
+	  }
   }
 }
 </script>

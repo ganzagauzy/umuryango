@@ -75,11 +75,11 @@ export default {
       },
     }
   },
-  redirect: {
-    login: '/auth/login',
-    logout: '/auth/login',
-    home: '/',
-  },
+  // redirect: {
+  //   login: '/auth/login',
+  //   logout: '/auth/login',
+  //   home: '/',
+  // },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
