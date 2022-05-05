@@ -10,8 +10,8 @@
               <v-container class="row">
              <div class="col">
                <h4>Hafi Yawe</h4>
-               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quo in mollitia, sed nulla assumenda quibusdam neque voluptatibus earum error. </p>
-               {{ new Date().getFullYear() }} — <strong>Hafi Yawe</strong>
+               <p class="text-height"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quo in mollitia, sed nulla assumenda quibusdam neque voluptatibus earum error. </p>
+               
              </div>
              <div class="col">
                 <h4>
@@ -36,10 +36,7 @@
                </h4>
                 <p>07888888888</p>
                 <p>test@me.com</p>
-             </div>
-             <div class="col">
-               <h4>Follow us</h4>
-               <div >
+                <div >
                  <a href="">
                  <v-icon link class="icon" dark>mdi-facebook</v-icon>
                  </a>
@@ -54,7 +51,12 @@
                  </a>
                </div>
              </div>
+             
              </v-container>
+             <hr>
+             <div class="text-center pb">
+               <strong>Hafi Yawe</strong> — {{ new Date().getFullYear() }} 
+             </div>
             </div>
 
         </v-main>
@@ -78,6 +80,8 @@ export default {
 .footer {
   background: #065A82;
   color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
 }
 .row {
   display: flex;
@@ -88,13 +92,17 @@ h4 {
   margin-bottom: 10px;
 }
 .col {
-  flex-basis: 20%;
+  flex-basis: 25%;
   @media screen and (max-width:500px) {
     flex-basis: 100%;
   }
 }
 .col:nth-child(1) {
-  flex-basis: 40%;
+  flex-basis: 50%;
+}
+.text-height {
+  margin-right: 100px;
+  line-height: 20px;
 }
 .nuxtlink {
   display: flex;
@@ -115,5 +123,13 @@ h4 {
 }
 a {
   text-decoration: none;
+}
+hr {
+  width: 90%;
+  margin: auto;
+  height: 0.5px;
+}
+.pb {
+  padding: 10px 0;
 }
 </style>

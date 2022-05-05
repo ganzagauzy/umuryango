@@ -272,7 +272,7 @@ body {
 }
 #sidebar .side-menu li a.logout {
 	color: var(--red);
-	margin-top: 100px;
+	margin-top: 70px;
 }
 #sidebar .side-menu.top li a:hover {
 	color: var(--blue);

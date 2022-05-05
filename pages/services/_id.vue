@@ -169,19 +169,19 @@ export default {
     height: 1000%;
     transition: 0.25s;
 }
-.square {
-    position: absolute;
-    top: 50%;
-    right: -20px;
-    transform: translateY(-50%);
-    border-radius: 8px;
-    transition: 0.25s;
-    height: 40px;
-    width: 40px;
-    background: #065A82;
-    // background: #011936;
+// .square {
+//     position: absolute;
+//     top: 50%;
+//     right: -20px;
+//     transform: translateY(-50%);
+//     border-radius: 8px;
+//     transition: 0.25s;
+//     height: 40px;
+//     width: 40px;
+//     background: #065A82;
+//     // background: #011936;
    
-}
+// }
 .border-radius {
   border-radius: 20px;
 }

@@ -3,7 +3,7 @@
     
     <v-main>
       <v-container class="py-10 container">
-        <v-card class="shadow mx-auto" max-width="500">
+        <v-card class="shadow mx-auto" width="400">
           <v-window v-model="step">
             <v-window-item :value="1">
               <v-row>
@@ -18,7 +18,7 @@
                         font-primary
                       "
                     >
-                      Login
+                      Login to your account
                     </h5>
                     <h4></h4>
                     <v-form @submit.prevent="submit" class="px-4">
@@ -55,14 +55,14 @@
                           text dark
                           type="submit"
                           elevation="0"
-                          ><p class="btn-text">Login</p><span class="square"></span></v-btn>
+                          ><p class="btn-text">Login</p><span class=""></span></v-btn>
                       </div>
                     </v-form>
                   </v-card-text>
                   <v-card-text>
-                    
-                    <p
-                      class="text-center"
+                    <div>
+                      <p
+                      class=""
                       style="font-size: 15px; font-weight: 600"
                     >
                      Don't have an account?
@@ -72,7 +72,7 @@
                       >
                     </p>
                     <p
-                      class="text-center"
+                      class=""
                       style="font-size: 15px; font-weight: 600"
                     >
                      Go to
@@ -80,6 +80,7 @@
                         >home</span
                       >
                     </p>
+                    </div>
                   </v-card-text>
                 </v-col>
               </v-row>
@@ -202,18 +203,19 @@ export default {
     background: #AAAAAA;
 }
 .text-link {
-  color: var(--primary-color);
+  color: #011936;
   cursor: pointer;
   text-decoration: underline;
 }
 
 .btn {
+  display: block;
     z-index: 5;
     position: relative;
     overflow: hidden;
 }
 .btn-text {
-    margin-top: 15px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -239,10 +241,13 @@ export default {
 }
 .container {
   align-self: center;
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.shadow {
+  border-radius: 10px;
 }
 
 </style>
