@@ -139,7 +139,8 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-    margin-top: 50px;
+    margin-top: 0px;
+    margin-bottom: 50px;
 }
 .display-flex {
   display: flex;
@@ -163,12 +164,12 @@ export default {
     align-items: center;
     z-index: 5;
 }
-.btn:hover .square {
-    right: -25px;
-    width: 1000%;
-    height: 1000%;
-    transition: 0.25s;
-}
+// .btn:hover .square {
+//     right: -25px;
+//     width: 1000%;
+//     height: 1000%;
+//     transition: 0.25s;
+// }
 // .square {
 //     position: absolute;
 //     top: 50%;
