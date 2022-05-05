@@ -173,16 +173,17 @@ li {
 
 
 .show-btn {
+  margin-top: -60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
 .irembo-btn {
-  margin-left: 50px;
+  margin-left: 65px;
 }
 .imisoro-btn {
-  margin-right: 50px;
+  margin-right: 65px;
 }
 // .irembo-imisoro {
 //   margin-left: 80px;
