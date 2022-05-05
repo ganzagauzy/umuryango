@@ -350,7 +350,7 @@ header ul li:hover .square {
     color: #fff;
     justify-content: center;
     align-items: center;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 .search {
     position: absolute;
