@@ -1,5 +1,5 @@
 <template>
-<v-app class="main">
+<div class="main" style="min-height: 0vh">
 
         
         <v-container class="show-btn">
@@ -52,7 +52,7 @@
         </div>
 
 
-</v-app>
+</div>
 </template>
 
 <script>
@@ -154,6 +154,7 @@ li {
 // }
 .main {
   bottom: 0;
+  min-height: 0vh;
 }
 .cat-serv {
   margin-left: 50px;
