@@ -2,8 +2,8 @@
   <v-app app class="header-store accent">
     
     <v-main>
-      <v-container class="py-10">
-        <v-card class="shadow mx-auto" max-width="400">
+      <v-container class="py-10 container">
+        <v-card class="shadow mx-auto" max-width="500">
           <v-window v-model="step">
             <v-window-item :value="1">
               <v-row>
@@ -76,6 +76,15 @@
                         >Login Here</span
                       >
                     </p>
+                    <p
+                      class="text-center"
+                      style="font-size: 15px; font-weight: 600"
+                    >
+                     Go to 
+                      <span class="text-link" @click="home"
+                        >home</span
+                      >
+                    </p>
                   </v-card-text>
                 </v-col>
               </v-row>
@@ -120,6 +129,9 @@ export default {
   methods: {
     login() {
       this.$router.push("/auth/login");
+    },
+    home() {
+      this.$router.push("/");
     },
     async submit() {
        await axios
@@ -212,6 +224,13 @@ export default {
     width: 40px;
     background: #011936;
    
+}
+.container {
+  align-self: center;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
 

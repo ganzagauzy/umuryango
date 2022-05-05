@@ -1,8 +1,7 @@
 <template>
-  <div class="main">
-    <div class="absolute">
-      
-      <div class="top2">
+<v-app class="main">
+
+        
         <v-container class="show-btn">
           <div class="irembo-btn">
           <v-btn class="btn-irembo" @click="">Irembo</v-btn>
@@ -10,8 +9,11 @@
           <div class="imisoro-btn">
           <v-btn class="btn-imisoro" @click="getTax">Imisoro</v-btn>
           </div>
+          
+          
         
         </v-container>
+        
         <div class="category" >
           <h2 class="text-center">Irembo</h2>
           <br>
@@ -46,23 +48,22 @@
                      <br>
                     </div>
         </v-container>
-        </div>
         
+        </div>
 
 
-
-      </div>
-    </div>
-  </div>
+</v-app>
 </template>
 
 <script>
 import axios from 'axios'
 import Dialog from '../../components/dialog.vue'
+import Footer from '../../components/footer.vue'
 export default {
   
   data() {
       
+    Footer
     
      return {
             categories: [],
@@ -146,21 +147,13 @@ ul {
 li {
   list-style: none;
 }
-.main {
-  background: #E3F2FD;
-  position: relative;
-}
-.absolute { 
-  position: absolute;
-  top: 80%;
-}
-.top2 {
-  position: relative;
-  padding-top: 100px;
-}
-.category {
-  padding:50px 0 ;
 
+// .category {
+//   padding:20px 0 ;
+
+// }
+.main {
+  bottom: 0;
 }
 .cat-serv {
   margin-left: 50px;
@@ -184,29 +177,31 @@ li {
   align-items: center;
   flex-wrap: wrap;
 }
-.irembo-imisoro {
-  margin-left: 80px;
-  margin-right: 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+.irembo-btn {
+  margin-left: 50px;
+}
+.imisoro-btn {
+  margin-right: 50px;
+}
+// .irembo-imisoro {
+//   margin-left: 80px;
+//   margin-right: 80px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   flex-wrap: wrap;
 
   
   
-}
+// }
 .btn-btn {
      @media screen and (max-width:375px) {
       margin-top: 10px;
   }
   }
   
-  .irembo-btn {
-     margin-left: 60px ;
-  }
-  .imisoro-btn {
-     margin-right: -400px ;
-  }
+
+  
   
 
 </style>

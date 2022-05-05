@@ -304,8 +304,9 @@ header ul li:hover .square {
     }
 }
 .hero {
-    padding: 0.5px 0;
+    padding: 0.1px 0;
     position: relative;
+    margin-bottom: 120px;
     background: #065A82;
 }
 .t1 {

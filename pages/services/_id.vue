@@ -139,7 +139,7 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-    margin-top: 150px;
+    margin-top: 50px;
 }
 .display-flex {
   display: flex;
@@ -188,6 +188,7 @@ export default {
 .apply-top {
   @media screen and (max-width:1248px) {
     margin-top: 30px;
+    margin-bottom: 50px;
   }
 }
 </style>
